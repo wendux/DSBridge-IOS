@@ -4,15 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>jsbridge.xcscheme</key>
+		<key>dsbridge.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>dsbridgedemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>818F0B8D1E18C08100679925</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>818F0B9D1E18C0AA00679925</key>
 		<dict>
 			<key>primary</key>
 			<true/>
