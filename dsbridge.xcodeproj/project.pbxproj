@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		818F0B931E18C08100679925 /* dsbridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0B921E18C08100679925 /* dsbridge.m */; };
+		818F0B941E18C08100679925 /* dsbridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0B911E18C08100679925 /* dsbridge.h */; };
+		818F0BA21E18C0AA00679925 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA11E18C0AA00679925 /* main.m */; };
+		818F0BA51E18C0AA00679925 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA41E18C0AA00679925 /* AppDelegate.m */; };
+		818F0BA81E18C0AA00679925 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA71E18C0AA00679925 /* ViewController.m */; };
+		818F0BAB1E18C0AA00679925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BA91E18C0AA00679925 /* Main.storyboard */; };
+		818F0BAD1E18C0AA00679925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BAC1E18C0AA00679925 /* Assets.xcassets */; };
+		818F0BB01E18C0AA00679925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BAE1E18C0AA00679925 /* LaunchScreen.storyboard */; };
+		818F0BB71E18C3B800679925 /* DWKwebview.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BB51E18C3B800679925 /* DWKwebview.m */; };
+		818F0BBA1E18C45E00679925 /* DUIwebview.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BB91E18C45E00679925 /* DUIwebview.m */; };
+		818F0BBD1E18C58000679925 /* DWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BBC1E18C58000679925 /* DWebview.m */; };
+		818F0BC01E18C59200679925 /* JSBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BBF1E18C59200679925 /* JSBUtil.m */; };
+		818F0BC21E18D44A00679925 /* DUIwebview.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BB81E18C45E00679925 /* DUIwebview.h */; };
+		818F0BC31E18D44A00679925 /* DWebview.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BBB1E18C58000679925 /* DWebview.h */; };
+		818F0BC41E18D44A00679925 /* DWKwebview.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BB61E18C3B800679925 /* DWKwebview.h */; };
+		818F0BC91E18DD3600679925 /* JsApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BC81E18DD3600679925 /* JsApiTest.m */; };
+		818F0BCD1E18E6D200679925 /* libdsbridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 818F0B8E1E18C08100679925 /* libdsbridge.a */; };
+		818F0BD01E1A820B00679925 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BCF1E1A820B00679925 /* test.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		818F0BC61E18D4D800679925 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 818F0B861E18C08100679925 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 818F0B8D1E18C08100679925;
+			remoteInfo = jsbridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		818F0B8C1E18C08100679925 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				818F0BC21E18D44A00679925 /* DUIwebview.h in CopyFiles */,
+				818F0BC31E18D44A00679925 /* DWebview.h in CopyFiles */,
+				818F0BC41E18D44A00679925 /* DWKwebview.h in CopyFiles */,
+				818F0B941E18C08100679925 /* dsbridge.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		818F0B8E1E18C08100679925 /* libdsbridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdsbridge.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		818F0B911E18C08100679925 /* dsbridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dsbridge.h; sourceTree = "<group>"; };
+		818F0B921E18C08100679925 /* dsbridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dsbridge.m; sourceTree = "<group>"; };
+		818F0B9E1E18C0AA00679925 /* dsbridgedemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dsbridgedemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		818F0BA11E18C0AA00679925 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		818F0BA31E18C0AA00679925 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		818F0BA41E18C0AA00679925 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		818F0BA61E18C0AA00679925 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		818F0BA71E18C0AA00679925 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		818F0BAA1E18C0AA00679925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		818F0BAC1E18C0AA00679925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		818F0BAF1E18C0AA00679925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		818F0BB11E18C0AA00679925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818F0BB51E18C3B800679925 /* DWKwebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWKwebview.m; sourceTree = "<group>"; };
+		818F0BB61E18C3B800679925 /* DWKwebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWKwebview.h; sourceTree = "<group>"; };
+		818F0BB81E18C45E00679925 /* DUIwebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIwebview.h; sourceTree = "<group>"; };
+		818F0BB91E18C45E00679925 /* DUIwebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIwebview.m; sourceTree = "<group>"; };
+		818F0BBB1E18C58000679925 /* DWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebview.h; sourceTree = "<group>"; };
+		818F0BBC1E18C58000679925 /* DWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWebview.m; sourceTree = "<group>"; };
+		818F0BBE1E18C59200679925 /* JSBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBUtil.h; sourceTree = "<group>"; };
+		818F0BBF1E18C59200679925 /* JSBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBUtil.m; sourceTree = "<group>"; };
+		818F0BC81E18DD3600679925 /* JsApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsApiTest.m; sourceTree = "<group>"; };
+		818F0BCB1E18DE7100679925 /* JsApiTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsApiTest.h; sourceTree = "<group>"; };
+		818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBWebEventDelegate.h; sourceTree = "<group>"; };
+		818F0BCF1E1A820B00679925 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		818F0B8B1E18C08100679925 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		818F0B9B1E18C0AA00679925 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818F0BCD1E18E6D200679925 /* libdsbridge.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		818F0B851E18C08100679925 = {
+			isa = PBXGroup;
+			children = (
+				818F0B901E18C08100679925 /* dsbridge */,
+				818F0B9F1E18C0AA00679925 /* dsbridgedemo */,
+				818F0B8F1E18C08100679925 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		818F0B8F1E18C08100679925 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				818F0B8E1E18C08100679925 /* libdsbridge.a */,
+				818F0B9E1E18C0AA00679925 /* dsbridgedemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		818F0B901E18C08100679925 /* dsbridge */ = {
+			isa = PBXGroup;
+			children = (
+				818F0BB81E18C45E00679925 /* DUIwebview.h */,
+				818F0BB91E18C45E00679925 /* DUIwebview.m */,
+				818F0BBB1E18C58000679925 /* DWebview.h */,
+				818F0BBC1E18C58000679925 /* DWebview.m */,
+				818F0BB61E18C3B800679925 /* DWKwebview.h */,
+				818F0BB51E18C3B800679925 /* DWKwebview.m */,
+				818F0B911E18C08100679925 /* dsbridge.h */,
+				818F0B921E18C08100679925 /* dsbridge.m */,
+				818F0BBE1E18C59200679925 /* JSBUtil.h */,
+				818F0BBF1E18C59200679925 /* JSBUtil.m */,
+				818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */,
+			);
+			path = dsbridge;
+			sourceTree = "<group>";
+		};
+		818F0B9F1E18C0AA00679925 /* dsbridgedemo */ = {
+			isa = PBXGroup;
+			children = (
+				818F0BA31E18C0AA00679925 /* AppDelegate.h */,
+				818F0BA41E18C0AA00679925 /* AppDelegate.m */,
+				818F0BAC1E18C0AA00679925 /* Assets.xcassets */,
+				818F0BB11E18C0AA00679925 /* Info.plist */,
+				818F0BCB1E18DE7100679925 /* JsApiTest.h */,
+				818F0BC81E18DD3600679925 /* JsApiTest.m */,
+				818F0BAE1E18C0AA00679925 /* LaunchScreen.storyboard */,
+				818F0BA91E18C0AA00679925 /* Main.storyboard */,
+				818F0BA01E18C0AA00679925 /* Supporting Files */,
+				818F0BA61E18C0AA00679925 /* ViewController.h */,
+				818F0BA71E18C0AA00679925 /* ViewController.m */,
+				818F0BCF1E1A820B00679925 /* test.html */,
+			);
+			path = dsbridgedemo;
+			sourceTree = "<group>";
+		};
+		818F0BA01E18C0AA00679925 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				818F0BA11E18C0AA00679925 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		818F0B8D1E18C08100679925 /* dsbridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 818F0B971E18C08100679925 /* Build configuration list for PBXNativeTarget "dsbridge" */;
+			buildPhases = (
+				818F0B8A1E18C08100679925 /* Sources */,
+				818F0B8B1E18C08100679925 /* Frameworks */,
+				818F0B8C1E18C08100679925 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dsbridge;
+			productName = jsbridge;
+			productReference = 818F0B8E1E18C08100679925 /* libdsbridge.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		818F0B9D1E18C0AA00679925 /* dsbridgedemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 818F0BB21E18C0AA00679925 /* Build configuration list for PBXNativeTarget "dsbridgedemo" */;
+			buildPhases = (
+				818F0B9A1E18C0AA00679925 /* Sources */,
+				818F0B9B1E18C0AA00679925 /* Frameworks */,
+				818F0B9C1E18C0AA00679925 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				818F0BC71E18D4D800679925 /* PBXTargetDependency */,
+			);
+			name = dsbridgedemo;
+			productName = jsbridgedemo;
+			productReference = 818F0B9E1E18C0AA00679925 /* dsbridgedemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		818F0B861E18C08100679925 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "杜文";
+				TargetAttributes = {
+					818F0B8D1E18C08100679925 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					818F0B9D1E18C0AA00679925 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 818F0B891E18C08100679925 /* Build configuration list for PBXProject "dsbridge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 818F0B851E18C08100679925;
+			productRefGroup = 818F0B8F1E18C08100679925 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				818F0B8D1E18C08100679925 /* dsbridge */,
+				818F0B9D1E18C0AA00679925 /* dsbridgedemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		818F0B9C1E18C0AA00679925 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818F0BD01E1A820B00679925 /* test.html in Resources */,
+				818F0BB01E18C0AA00679925 /* LaunchScreen.storyboard in Resources */,
+				818F0BAD1E18C0AA00679925 /* Assets.xcassets in Resources */,
+				818F0BAB1E18C0AA00679925 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		818F0B8A1E18C08100679925 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818F0BC01E18C59200679925 /* JSBUtil.m in Sources */,
+				818F0BBD1E18C58000679925 /* DWebview.m in Sources */,
+				818F0BB71E18C3B800679925 /* DWKwebview.m in Sources */,
+				818F0BBA1E18C45E00679925 /* DUIwebview.m in Sources */,
+				818F0B931E18C08100679925 /* dsbridge.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		818F0B9A1E18C0AA00679925 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818F0BA81E18C0AA00679925 /* ViewController.m in Sources */,
+				818F0BC91E18DD3600679925 /* JsApiTest.m in Sources */,
+				818F0BA51E18C0AA00679925 /* AppDelegate.m in Sources */,
+				818F0BA21E18C0AA00679925 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		818F0BC71E18D4D800679925 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 818F0B8D1E18C08100679925 /* dsbridge */;
+			targetProxy = 818F0BC61E18D4D800679925 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		818F0BA91E18C0AA00679925 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				818F0BAA1E18C0AA00679925 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		818F0BAE1E18C0AA00679925 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				818F0BAF1E18C0AA00679925 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		818F0B951E18C08100679925 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		818F0B961E18C08100679925 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		818F0B981E18C08100679925 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		818F0B991E18C08100679925 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		818F0BB31E18C0AA00679925 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = dsbridgedemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		818F0BB41E18C0AA00679925 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = dsbridgedemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		818F0B891E18C08100679925 /* Build configuration list for PBXProject "dsbridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				818F0B951E18C08100679925 /* Debug */,
+				818F0B961E18C08100679925 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		818F0B971E18C08100679925 /* Build configuration list for PBXNativeTarget "dsbridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				818F0B981E18C08100679925 /* Debug */,
+				818F0B991E18C08100679925 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		818F0BB21E18C0AA00679925 /* Build configuration list for PBXNativeTarget "dsbridgedemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				818F0BB31E18C0AA00679925 /* Debug */,
+				818F0BB41E18C0AA00679925 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 818F0B861E18C08100679925 /* Project object */;
+}
