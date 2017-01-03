@@ -37,7 +37,7 @@
     [webview setJavascriptContextInitedListener:^(){
         [_webview callHandler:@"test"
                     arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
-            completionHandler:^(id value){
+            completionHandler:^(NSString * value){
                 NSLog(@"%@",value);
             }];
     }];

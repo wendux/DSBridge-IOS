@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reload;
 
 - (void)setJavascriptContextInitedListener:(void (^)(void))callback;
-- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(NSString *js))completionHandler;
+- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(NSString *result))completionHandler;
 -(void)callHandler:(NSString *)methodName arguments:(NSArray * _Nullable)args completionHandler:(void (^)(NSString *  _Nullable))completionHandler;
 
 - (void) clearCache;

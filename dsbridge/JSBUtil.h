@@ -21,8 +21,8 @@ _Pragma("clang diagnostic pop") \
 }
 
 @interface JSBUtil : NSObject
-+ (NSString * _Nullable)dictToJsonString:(id  _Nonnull)dict;
-+ (NSDictionary * _Nullable)jsonStringToDict:(NSString * _Nonnull)jsonString;
++ (NSString * _Nullable)objToJsonString:(id  _Nonnull)dict;
++ (id  _Nullable)jsonStringToObject:(NSString * _Nonnull)jsonString;
 + (NSString * _Nullable)call:(NSString* _Nonnull) method :(NSString* _Nonnull) args  JavascriptInterfaceObject:(id _Nonnull) JavascriptInterfaceObject jscontext:(id _Nonnull) jscontext;
 
 @end

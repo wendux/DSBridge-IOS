@@ -19,8 +19,7 @@
         }else{
             webview=[[DUIwebview alloc] initWithFrame:frame];
         }
-        [self addSubview:webview];
-        
+        [self addSubview:webview]; 
     }
     return self;
 }

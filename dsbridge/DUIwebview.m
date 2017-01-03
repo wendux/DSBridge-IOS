@@ -92,16 +92,6 @@ static NSHashTable* g_webViews = nil;
     return self;
 }
 
-- (void)setUIWebViewDelegate:(id<UIWebViewDelegate>)delegate
-{
-    if(delegate!=self){
-        @throw [[NSException alloc]
-                initWithName:@"Jsbridge error!"
-                reason:@"Don't use the property delegate of DUIwebview, please use WebEventDelegate instead!" userInfo:nil];
-        return;
-    }
-    super.delegate=delegate;
-}
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     return YES;
@@ -132,7 +122,7 @@ static NSHashTable* g_webViews = nil;
     if(!args){
         args=[[NSArray alloc] init];
     }
-    NSString *script=[NSString stringWithFormat:@"%@.apply(window,%@)",methodName,[JSBUtil dictToJsonString:args]];
+    NSString *script=[NSString stringWithFormat:@"%@.apply(window,%@)",methodName,[JSBUtil objToJsonString:args]];
     [self evaluateJavaScript:script completionHandler:^(NSString * value){
         if(completionHandler) completionHandler(value);
     }];

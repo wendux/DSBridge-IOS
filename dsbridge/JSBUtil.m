@@ -8,7 +8,7 @@
 #import "DWebview.h"
 
 @implementation JSBUtil
-+ (NSString *)dictToJsonString:(id)dict
++ (NSString *)objToJsonString:(id)dict
 {
     NSString *jsonString = nil;
     NSError *error;
@@ -30,7 +30,7 @@
     if(!JavascriptInterfaceObject){
         NSLog(@"Js bridge method called, but there is not a JavascriptInterfaceObject, please set JavascriptInterfaceObject first!");
     }else{
-        NSDictionary * json=[JSBUtil jsonStringToDict:args];
+        NSDictionary * json=[JSBUtil jsonStringToObject:args];
         NSString * cb;
         do{
             if(json && (cb= [json valueForKey:@"_dscbstub"])){
@@ -69,7 +69,7 @@
 }
 
 
-+ (NSDictionary *)jsonStringToDict:(NSString *)jsonString
++ (id )jsonStringToObject:(NSString *)jsonString
 {
     if (jsonString == nil) {
         return nil;

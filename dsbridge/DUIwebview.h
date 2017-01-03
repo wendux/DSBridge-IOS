@@ -18,6 +18,5 @@
 -(void) callHandler:(NSString * _Nonnull) methodName  arguments:(NSArray * _Nullable) args completionHandler:(void (^ _Nullable)(NSString * _Nullable ))completionHandler;
 
 @property (nullable, nonatomic, weak) id<JSBWebEventDelegateProtocol> WebEventDelegate;
-@property (nullable, nonatomic, assign, setter=setUIWebViewDelegate:) id <UIWebViewDelegate> delegate;
 @property (nullable, nonatomic, weak) id JavascriptInterfaceObject ;
 @end
