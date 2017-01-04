@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/du/Documents/code/xcode/jsbridge/dsbridge.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		815FCC931E1CE48F0073CA79 /* JSBUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BBE1E18C59200679925 /* JSBUtil.h */; };
+		815FCC941E1CE4E70073CA79 /* JSBWebEventDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */; };
 		818F0B931E18C08100679925 /* dsbridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0B921E18C08100679925 /* dsbridge.m */; };
 		818F0B941E18C08100679925 /* dsbridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0B911E18C08100679925 /* dsbridge.h */; };
 		818F0BA21E18C0AA00679925 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA11E18C0AA00679925 /* main.m */; };
@@ -44,6 +46,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				815FCC941E1CE4E70073CA79 /* JSBWebEventDelegate.h in CopyFiles */,
+				815FCC931E1CE48F0073CA79 /* JSBUtil.h in CopyFiles */,
 				818F0BC21E18D44A00679925 /* DUIwebview.h in CopyFiles */,
 				818F0BC31E18D44A00679925 /* DWebview.h in CopyFiles */,
 				818F0BC41E18D44A00679925 /* DWKwebview.h in CopyFiles */,

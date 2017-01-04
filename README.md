@@ -97,6 +97,11 @@ testSyn为同步api, js在调用同步api时会等待native返回，返回后js�
 
 testAsyn为异步api, 异步操作时调用handler.complete通知js，此时js中设置的回调将会被调用。
 
+**为了在ios和android平台下兼容，对IOS端Native API接口约定如下：**
+
+1. 返回值类型存在时为NSString、不存在时为void。
+2. 参数以JSON传递; DSBridge会将js参数自动转化为NSDictionary 
+
 注：JsApiTest.m中实现的方法可以不在JsApiTest.h中声明
 
 ### 注册Api
@@ -195,3 +200,7 @@ DWebview还提供了一些其它api和属性，具体请查看其头文件，需
 DWebview已经实现 alert、prompt、comfirm对话框，您可以不做处理，也可以自定义。值得一提的是js 在调用alert函数正常情况下只要用户没有关闭alert对话框，js代码是会阻塞的，但是考虑到alert 对话框只有一个确定按钮，也就是说无论用户关闭还是确定都不会影响js代码流程，所以**DWebview中在弹出alert对话框时会先给js返回**，这样一来js就可以继续执行，而提示框等用户关闭时在关闭即可。如果你就是想要阻塞的alert，可以自定义。而DWebview的prompt、comfirm实现完全符合ecma标准，都是阻塞的。
 
 请不要手动设置DUIwebview的delegate属性，因为DUIwebview在内部已经设置了该属性，如果您需要自己处理页面加载过程，请设置WebEventDelegate属性。
+
+### 拉票
+
+如果你觉得不错，麻烦star一下哦！多谢支持😄。如有问题，欢迎反馈，wechat: Demons-du
