@@ -130,11 +130,11 @@
 {
     if([webview isKindOfClass:[DUIwebview class]]){
         [(DUIwebview *)webview  evaluateJavaScript:javaScriptString completionHandler:^(NSString * result){
-            if(!completionHandler) completionHandler(result);
+            if(completionHandler) completionHandler(result);
         }];
     }else{
         [(DWKwebview *)webview evaluateJavaScript:javaScriptString completionHandler:^(NSString * result, NSError * error){
-            if(!completionHandler) completionHandler(result);
+            if(completionHandler) completionHandler(result);
         }];
     }
 }
