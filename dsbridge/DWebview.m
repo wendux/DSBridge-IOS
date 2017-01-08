@@ -19,7 +19,7 @@
         }else{
             webview=[[DUIwebview alloc] initWithFrame:frame];
         }
-        [self addSubview:webview]; 
+        [self addSubview:webview];
     }
     return self;
 }
@@ -134,7 +134,7 @@
         }];
     }else{
         [(DWKwebview *)webview evaluateJavaScript:javaScriptString completionHandler:^(NSString * result, NSError * error){
-            if(completionHandler) completionHandler(result);
+            if(completionHandler ) completionHandler(result);
         }];
     }
 }

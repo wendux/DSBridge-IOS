@@ -86,7 +86,7 @@ API的实现非常简单，只需要将您要暴漏给js的api放在一个类中
     return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
 }
 
-- (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))handler
+- (NSString *) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))handler
 {
     handler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"]);
 }
@@ -99,7 +99,7 @@ testAsyn为异步api, 异步操作时调用handler.complete通知js，此时js�
 
 **为了在ios和android平台下兼容，对IOS端Native API接口约定如下：**
 
-1. 返回值类型存在时为NSString、不存在时为void。
+1. 返回值类型为NSString,不存在时返回nil即可。
 2. 参数以JSON传递; DSBridge会将js参数自动转化为NSDictionary 
 
 注：JsApiTest.m中实现的方法可以不在JsApiTest.h中声明
