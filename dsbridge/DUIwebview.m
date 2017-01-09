@@ -140,21 +140,21 @@ static NSHashTable* g_webViews = nil;
     if(javascriptContextInitedListener){
         javascriptContextInitedListener();
     }
-    if([WebEventDelegate respondsToSelector:@selector(onpageFinished:)]){
+    if([WebEventDelegate respondsToSelector:NSSelectorFromString(@"onpageFinished:")]){
         [WebEventDelegate onpageFinished: [webView.request.URL absoluteString]];
     }
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
-    if([WebEventDelegate respondsToSelector:@selector(onPageStart:)]){
+    if([WebEventDelegate respondsToSelector:NSSelectorFromString(@"onPageStart:")]){
         [WebEventDelegate onPageStart:[webView.request.URL absoluteString]];
     }
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    if([WebEventDelegate respondsToSelector:@selector(onpageError::)]){
+    if([WebEventDelegate respondsToSelector: NSSelectorFromString(@"onpageError::")]){
         [WebEventDelegate onpageError:[webView.request.URL absoluteString] :[error localizedDescription]];
     }
 }
