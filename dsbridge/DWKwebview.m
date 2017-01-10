@@ -38,7 +38,6 @@
     }
     return self;
 }
-
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt
     defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame
 completionHandler:(void (^)(NSString * _Nullable result))completionHandler

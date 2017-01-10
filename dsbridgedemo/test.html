@@ -7,7 +7,7 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
                     <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=no"/>
                     
-    </head>
+                    </head>
     <style>
         .btn {
             text-align: center;
@@ -27,11 +27,11 @@
     
         </style>
     <body>
-        
         <div class="btn" onclick="callSyn()">同步调用</div>
         <div class="btn" onclick="callAsyn()">异步调用</div>
         <div class="btn" onclick="callNoArgSyn()">无参函数同步调用</div>
         <div class="btn" onclick="callNoArgAsyn()">无参函数异步调用</div>
+        <div class="btn" onclick="callAsyn_()">压力测试，连续调用10w异步api</div>
         <div class="btn" onclick="callNever()">不调用(没有@JavascriptInterface标注)<br/>仅Android,IOS忽略此项</div>
         
         <div class="btn" onclick="alert(confirm('Press a button'))">confirm test</div>
@@ -48,8 +48,18 @@
         
         function callAsyn() {
             bridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
-                        alert(v);
-                        })
+                        alert(v)
+                    })
+        }
+        
+        function callAsyn_() {
+            for(var i=0;i<100000;i++){
+                bridge.call("testAsyn", {msg: "js+"+i}, function (v) {
+                            if(v=="js+99999[ asyn call]"){
+                                alert("全部任务执行结束")
+                            }
+                     })
+            }
         }
         
         function callNoArgSyn() {

@@ -220,6 +220,7 @@
 					};
 					818F0B9D1E18C0AA00679925 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XTLLEQZMD7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -422,9 +423,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XTLLEQZMD7;
 				INFOPLIST_FILE = dsbridgedemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo;
+				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo.xx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -433,9 +436,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XTLLEQZMD7;
 				INFOPLIST_FILE = dsbridgedemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo;
+				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo.xx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
