@@ -11,11 +11,6 @@
 #import "DUIwebview.h"
 NS_ASSUME_NONNULL_BEGIN
 @interface DWebview : UIView
-{
-   id  webview;
-   void(^javascriptContextInitedListener)(void);
-    
-}
 @property(nonatomic, readonly, getter=canGoBack) BOOL canGoBack;
 @property(nonatomic, readonly, getter=canGoForward) BOOL canGoForward;
 @property(nonatomic, readonly, strong)NSURLRequest * _Nonnull request;
@@ -37,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)callHandler:(NSString *)methodName arguments:(NSArray * _Nullable)args completionHandler:(void (^)(NSString *  _Nullable))completionHandler;
 
 - (void) clearCache;
+
 
 
 @end

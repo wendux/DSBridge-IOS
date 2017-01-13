@@ -8,18 +8,30 @@
 
 #import "DWebview.h"
 
-@implementation DWebview
+@interface DWebview ()
+@property (weak) id webview;
+@end
 
+@implementation DWebview
+{
+    void(^javascriptContextInitedListener)(void);
+    //NSString * ua;
+    
+}
+
+@synthesize webview;
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        id wv;
         if ([[UIDevice currentDevice].systemVersion floatValue] >=8.0) {
-            webview=[[DWKwebview alloc] initWithFrame:frame];
+            wv=[[DWKwebview alloc] initWithFrame:frame];
         }else{
-            webview=[[DUIwebview alloc] initWithFrame:frame];
+            wv=[[DUIwebview alloc] initWithFrame:frame];
         }
-        [self addSubview:webview];
+        [self addSubview:wv];
+        webview=wv;
     }
     return self;
 }
@@ -37,6 +49,8 @@
         [(DWKwebview *)webview loadRequest:request];
     }
 }
+
+
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL
 {
@@ -147,6 +161,7 @@
         [(DWKwebview *)webview callHandler:methodName arguments:args completionHandler:completionHandler];
     }
 }
+
 
 - (void)clearCache
 {

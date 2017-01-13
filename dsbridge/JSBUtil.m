@@ -41,7 +41,7 @@ bool g_ds_have_pending=false;
                 if([JavascriptInterfaceObject respondsToSelector:selasyn]){
                     void (^completionHandler)(NSString *) = ^(NSString * value){
                         value=[value stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-                        NSString*js=[NSString stringWithFormat:@"%@(decodeURIComponent(\"%@\"));delete window.%@; ",cb,(value == nil) ? @"" : value,cb];
+                        NSString*js=[NSString stringWithFormat:@"try {%@(decodeURIComponent(\"%@\"));delete window.%@; } catch(e){};",cb,(value == nil) ? @"" : value,cb];
                         if([jscontext isKindOfClass:JSContext.class]){
                             [jscontext evaluateScript:js ];
                         }else if([jscontext isKindOfClass:WKWebView.class]){
