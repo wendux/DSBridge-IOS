@@ -47,7 +47,7 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
     alert(v);
    })
 
-   //Test will be called by Java, must be global function
+   //Test will be called by Object-c, must be global function
    function test(arg1,arg2){
     return arg1+arg2;
    }
@@ -71,9 +71,9 @@ Get the bridge object。 Although you can call it  anywhere in the page, we also
 
 ### bridge.call(method,[args,callback])
 
-Call Java api synchronously and asynchronously。
+Call Object-C api synchronously and asynchronously。
 
-method: Java method name
+method: Object-c  method name
 
 args: arguments with json object
 
