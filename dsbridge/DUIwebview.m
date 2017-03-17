@@ -154,8 +154,10 @@ static NSHashTable* g_webViews = nil;
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    if([WebEventDelegate respondsToSelector: NSSelectorFromString(@"onpageError::")]){
-        [WebEventDelegate onpageError:[webView.request.URL absoluteString] :[error localizedDescription]];
+    if(error.code!=NSURLErrorCancelled){
+        if([WebEventDelegate respondsToSelector: NSSelectorFromString(@"onpageError::")]){
+            [WebEventDelegate onpageError:[webView.request.URL absoluteString] :[error localizedDescription]];
+        }
     }
 }
 @end
