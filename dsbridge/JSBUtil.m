@@ -61,7 +61,7 @@ bool g_ds_have_pending=false;
                         }
                     };
                     SuppressPerformSelectorLeakWarning(
-                                                       result=[JavascriptInterfaceObject performSelector:selasyn withObject:json withObject:completionHandler];
+                                                       [JavascriptInterfaceObject performSelector:selasyn withObject:json withObject:completionHandler];
                                                        
                                                        );
                     //when performSelector is performing a selector that return value type is void,

@@ -15,10 +15,9 @@
     return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
 }
 
-- (NSString *) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
+- (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
 {
     completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"]);
-    return nil;
 }
 
 - (NSString *)testNoArgSyn:(NSDictionary *) args
@@ -26,10 +25,10 @@
     return  @"testNoArgSyn called [ syn call]";
 }
 
-- (NSString *)testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
+- ( void )testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
 {
     completionHandler(@"testNoArgAsyn called [ asyn call]");
-    return nil;
+    //return nil;
 }
 
 @end
