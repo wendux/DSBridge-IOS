@@ -35,6 +35,10 @@
     
     __block DWebview * _webview=webview;
     [webview setJavascriptContextInitedListener:^(){
+        [_webview evaluateJavaScript:@"try{var test;}catch(e){};"
+            completionHandler:^(NSString * value){
+                NSLog(@"%@",value);
+            }];
         [_webview callHandler:@"test"
                     arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
             completionHandler:^(NSString * value){

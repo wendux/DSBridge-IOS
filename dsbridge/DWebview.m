@@ -148,7 +148,9 @@
         }];
     }else{
         [(DWKwebview *)webview evaluateJavaScript:javaScriptString completionHandler:^(NSString * result, NSError * error){
-            if(completionHandler ) completionHandler(result);
+            NSLog(@"WKwebview exec js error: %@",error);
+            if(!result) result=@"";
+            if(completionHandler ) completionHandler(error?nil:result);
         }];
     }
 }

@@ -26,9 +26,10 @@
     return  @"testNoArgSyn called [ syn call]";
 }
 
-- (void)testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
+- (NSString *)testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
 {
     completionHandler(@"testNoArgAsyn called [ asyn call]");
+    return nil;
 }
 
 @end
