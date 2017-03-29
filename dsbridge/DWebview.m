@@ -26,7 +26,7 @@
     if (self) {
         id wv;
         if ([[UIDevice currentDevice].systemVersion floatValue] >=8.0) {
-            wv=[[DWKwebview alloc] initWithFrame:frame];
+            wv=[[DWKwebview alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         }else{
             wv=[[DUIwebview alloc] initWithFrame:frame];
         }
@@ -148,7 +148,9 @@
         }];
     }else{
         [(DWKwebview *)webview evaluateJavaScript:javaScriptString completionHandler:^(NSString * result, NSError * error){
-            NSLog(@"WKwebview exec js error: %@",error);
+            if(error){
+                NSLog(@"WKwebview exec js error: %@",error);
+            }
             if(!result) result=@"";
             if(completionHandler ) completionHandler(error?nil:result);
         }];

@@ -16,9 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect bounds=self.view.bounds;
-    bounds.origin.y=20;
-    bounds.size.height-=20;
-    DWebview * webview=[[DWebview alloc] initWithFrame:bounds];
+    //bounds.origin.y=20;
+    //bounds.size.height-=20;
+    DWebview * webview=[[DWebview alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height-25)];
+    webview.backgroundColor=UIColor.redColor;
     jsApi=[[JsApiTest alloc] init];
     webview.JavascriptInterfaceObject=jsApi;
     [self.view addSubview:webview];
@@ -32,13 +33,8 @@
                                                     encoding:NSUTF8StringEncoding
                                                        error:nil];
     [webview loadHTMLString:htmlContent baseURL:baseURL];
-    
-    __block DWebview * _webview=webview;
+    __weak DWebview * _webview=webview;
     [webview setJavascriptContextInitedListener:^(){
-        [_webview evaluateJavaScript:@"try{var test;}catch(e){};"
-            completionHandler:^(NSString * value){
-                NSLog(@"%@",value);
-            }];
         [_webview callHandler:@"test"
                     arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
             completionHandler:^(NSString * value){
