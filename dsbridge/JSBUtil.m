@@ -6,6 +6,7 @@
 
 #import "JSBUtil.h"
 #import "DWebview.h"
+#import <objc/runtime.h>
 
 @implementation JSBUtil
 + (NSString *)objToJsonString:(id)dict
@@ -27,8 +28,10 @@ bool g_ds_have_pending=false;
 
 +(NSString *)call:(NSString*) method :(NSString*) args  JavascriptInterfaceObject:(id) JavascriptInterfaceObject jscontext:(id) jscontext
 {
-    SEL sel=NSSelectorFromString([method stringByAppendingString:@":"]);
-    SEL selasyn=NSSelectorFromString([method stringByAppendingString:@"::"]);
+    NSString *methodOne = [JSBUtil methodByNameArg:1 selName:method class:[JavascriptInterfaceObject class]];
+    NSString *methodTwo = [JSBUtil methodByNameArg:2 selName:method class:[JavascriptInterfaceObject class]];
+    SEL sel=NSSelectorFromString(methodOne);
+    SEL selasyn=NSSelectorFromString(methodTwo);
     NSString *error=[NSString stringWithFormat:@"Error! \n Method %@ is not invoked, since there is not a implementation for it",method];
     NSString *result=@"";
     if(!JavascriptInterfaceObject){
@@ -94,6 +97,40 @@ bool g_ds_have_pending=false;
     }
     return result;
 }
+
+//get this class all method
++(NSArray *)allMethodFromClass:(Class)class
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    u_int count;
+    Method *methods = class_copyMethodList(class, &count);
+    for (int i =0; i<count; i++) {
+        SEL name1 = method_getName(methods[i]);
+        const char *selName= sel_getName(name1);
+        NSString *strName = [NSString stringWithCString:selName encoding:NSUTF8StringEncoding];
+        //NSLog(@"%@",strName);
+        [arr addObject:strName];
+    }
+    return arr;
+}
+
+//return method name for xxx: or xxx:handle:
++(NSString *)methodByNameArg:(NSInteger)argNum selName:(NSString *)selName class:(Class)class
+{
+    NSString *result = nil;
+    NSArray *arr = [JSBUtil allMethodFromClass:class];
+    for (int i=0; i<arr.count; i++) {
+        NSString *method = arr[i];
+        NSArray *tmpArr = [method componentsSeparatedByString:@":"];
+        if ([method hasPrefix:selName]&&tmpArr.count==(argNum+1)) {
+            result = method;
+            return result;
+        }
+    }
+    
+    return result;
+}
+
 
 + (void) evalJavascript:(WKWebView *)jscontext :(int) delay{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
