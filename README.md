@@ -21,7 +21,7 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
    //for asynchronous invocation
    - (NSString *) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL isComplete))handler
    {
-       handler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],true);
+       handler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],YES);
    }
    @end
    ```

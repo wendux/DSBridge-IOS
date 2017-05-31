@@ -24,7 +24,7 @@
 
 - (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
 {
-    completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],true);
+    completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],YES);
 }
 
 - (NSString *)testNoArgSyn:(NSDictionary *) args
@@ -34,7 +34,7 @@
 
 - ( void )testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
 {
-    completionHandler(@"testNoArgAsyn called [ asyn call]",true);
+    completionHandler(@"testNoArgAsyn called [ asyn call]",YES);
 }
 
 - ( void )callProgress:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
