@@ -42,9 +42,13 @@ bool g_ds_have_pending=false;
         do{
             if(json && (cb= [json valueForKey:@"_dscbstub"])){
                 if([JavascriptInterfaceObject respondsToSelector:selasyn]){
-                    void (^completionHandler)(NSString *) = ^(NSString * value){
+                    void (^completionHandler)(NSString *,BOOL) = ^(NSString * value,BOOL complete){
                         value=[value stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-                        NSString*js=[NSString stringWithFormat:@"try {%@(decodeURIComponent(\"%@\"));delete window.%@; } catch(e){};",cb,(value == nil) ? @"" : value,cb];
+                        NSString *del=@"";
+                        if(complete){
+                           del=[@"delete window." stringByAppendingString:cb];
+                        }
+                        NSString*js=[NSString stringWithFormat:@"try {%@(decodeURIComponent(\"%@\"));%@; } catch(e){};",cb,(value == nil) ? @"" : value,del];
                         if([jscontext isKindOfClass:JSContext.class]){
                             [jscontext evaluateScript:js ];
                         }else if([jscontext isKindOfClass:WKWebView.class]){

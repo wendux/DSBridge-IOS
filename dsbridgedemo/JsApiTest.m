@@ -8,6 +8,13 @@
 
 #import "JsApiTest.h"
 
+@interface JsApiTest(){
+  NSTimer * timer ;
+  void(^hanlder)(NSString *s,BOOL isComplete);
+  int value;
+}
+@end
+
 @implementation JsApiTest
 
 - (NSString *) testSyn:(NSDictionary *) args
@@ -15,9 +22,9 @@
     return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
 }
 
-- (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
+- (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
 {
-    completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"]);
+    completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],true);
 }
 
 - (NSString *)testNoArgSyn:(NSDictionary *) args
@@ -25,10 +32,25 @@
     return  @"testNoArgSyn called [ syn call]";
 }
 
-- ( void )testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))completionHandler
+- ( void )testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
 {
-    completionHandler(@"testNoArgAsyn called [ asyn call]");
-    //return nil;
+    completionHandler(@"testNoArgAsyn called [ asyn call]",true);
+}
+
+- ( void )callProgress:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+{
+    value=10;
+    hanlder=completionHandler;
+    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+}
+
+-(void)onTimer:t{
+    if(value!=-1){
+        hanlder([NSString stringWithFormat:@"%d",value--],NO);
+    }else{
+        hanlder(@"",YES);
+        [timer invalidate];
+    }
 }
 
 @end

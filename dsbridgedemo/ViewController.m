@@ -35,7 +35,7 @@
     [webview loadHTMLString:htmlContent baseURL:baseURL];
     __weak DWebview * _webview=webview;
     [webview setJavascriptContextInitedListener:^(){
-        [_webview callHandler:@"test"
+        [_webview callHandler:@"addValue"
                     arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
             completionHandler:^(NSString * value){
                 NSLog(@"%@",value);

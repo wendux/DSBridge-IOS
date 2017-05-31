@@ -1,11 +1,10 @@
-# DSBridge
+# DSBridge-v2.0
 
 > DSBridge is currently the best Javascript bridge in the world , by which we can call functions synchronously and asynchronously between web and Native . Moreover, both android and ios are supported !
 
 DSBridge-IOS:https://github.com/wendux/DSBridge-IOS
+
 DSBridge-Android:https://github.com/wendux/DSBridge-Android
-中文文档请移步：http://www.jianshu.com/p/633d9fde946f
-与WebViewJavascriptBridge的对比请移步 [DSBridge VS WebViewJavascriptBridge]( http://www.jianshu.com/p/d967b0d85b97)。
 
 ## Usage
 
@@ -20,9 +19,9 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
        return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
-   - (NSString *) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result))handler
+   - (NSString *) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL isComplete))handler
    {
-       handler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"]);
+       handler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],true);
    }
    @end
    ```
@@ -38,25 +37,24 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
 3. Call Object-C API in Javascript, and declare a global javascript function for the following  Object-c invocation.
 
    ```javascript
-   //Call Object-C API
-   var bridge = getJsBridge();
+
    //Call synchronously 
-   var str=bridge.call("testSyn", {msg: "testSyn"});
+   var str=dsBridge.call("testSyn", {msg: "testSyn"});
    //Call asynchronously
-   bridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
+   dsBridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
     alert(v);
    })
 
-   //Test will be called by Object-c, must be global function
-   function test(arg1,arg2){
-    return arg1+arg2;
-   }
+   //Register javascrit function for Object-c invocation
+    dsBridge.register('addValue',function(r,l){
+        return r+l;
+    })
    ```
 
 4. Call Javascript function in Object-C .
 
    ```objective-c
-    [_webview callHandler:@"test"
+    [_webview callHandler:@"addValue"
      arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
      completionHandler:^(NSString *  value){
          NSLog(@"%@",value);
@@ -65,11 +63,11 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
 
 ## Javascript API introduction
 
-### **getJsBridge** 
+### **dsBridge** 
 
-Get the bridge object。 Although you can call it  anywhere in the page, we also advise you to call it after dom ready.
+"dsBridge" is a built-in object , it has two method "call" and "register";
 
-### bridge.call(method,[args,callback])
+### dsBridge.call(method,[args,callback])
 
 Call Object-C api synchronously and asynchronously。
 
@@ -78,6 +76,16 @@ method: Object-c  method name
 args: arguments with json object
 
 callback(String returnValue):callback to handle the result. **only asynchronous invocation required**.
+
+### dsBridge.register(methodName,function)
+
+Register javascript method for OC invocation.
+
+methodName: javascript function name
+
+function: javascript method body.
+
+
 
 ## Notice
 
@@ -116,7 +124,7 @@ example:
 ```objective-c
 __block DWebview * _webview=webview;
 [webview setJavascriptContextInitedListener:^(){
-  [_webview callHandler:@"test"
+  [_webview callHandler:@"addValue"
   arguments:[[NSArray alloc] initWithObjects:@1,@"hello", nil]
   completionHandler:^(NSString *  value){
       NSLog(@"%@",value);

@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dsbridge/JSBUtil.m"
-            timestampString = "505709742.008253"
+            timestampString = "517906734.619746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "+call::JavascriptInterfaceObject:jscontext:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,12 +250,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dsbridge/JSBUtil.m"
-            timestampString = "505710774.91992"
+            timestampString = "517906734.619746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "+evalJavascript::"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "+call::JavascriptInterfaceObject:jscontext:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dsbridge/JSBUtil.m"
-            timestampString = "505710774.91992"
+            timestampString = "517906734.619746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "+evalJavascript::"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "+allMethodFromClass:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dsbridge/JSBUtil.m"
-            timestampString = "511857257.557767"
+            timestampString = "517906734.619746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "+call::JavascriptInterfaceObject:jscontext:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dsbridge/JSBUtil.m"
-            timestampString = "511857260.010285"
+            timestampString = "517906734.619746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "+call::JavascriptInterfaceObject:jscontext:"
             landmarkType = "7">
          </BreakpointContent>

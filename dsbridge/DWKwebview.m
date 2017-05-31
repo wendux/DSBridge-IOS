@@ -147,7 +147,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     if(!args){
         args=[[NSArray alloc] init];
     }
-    NSString *script=[NSString stringWithFormat:@"%@.apply(null,%@)",methodName,[JSBUtil objToJsonString:args]];
+    NSString *script=[NSString stringWithFormat:@"(window._dsf.%@||window.%@).apply(window._dsf||window,%@)",methodName, methodName,[JSBUtil objToJsonString:args]];
     [self evaluateJavaScript:script completionHandler:^(id value,NSError * error){
         if(completionHandler) completionHandler(value);
     }];

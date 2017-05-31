@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DWebview.h"
 
-static NSString * _Nonnull INIT_SCRIPT=@"function getJsBridge(){return{call:function(e,c,a){var b='';if(typeof c=='function'){a=c;c={}}if(typeof a=='function'){window.dscb=window.dscb||0;var d='dscb'+window.dscb++;window[d]=a;c._dscbstub=d}c=JSON.stringify(c||{});if(window._dswk){b=prompt(window._dswk+e,c)}else{if(typeof _dsbridge=='function'){b=_dsbridge(e,c)}else{b=_dsbridge.call(e,c)}}return b}}};";
+static NSString * _Nonnull INIT_SCRIPT=@"function getJsBridge(){window._dsf=window._dsf||{};return{call:function(b,a,c){'function'==typeof a&&(c=a,a={});if('function'==typeof c){window.dscb=window.dscb||0;var d='dscb'+window.dscb++;window[d]=c;a._dscbstub=d}a=JSON.stringify(a||{});return window._dswk?prompt(window._dswk+b,a):'function'==typeof _dsbridge?_dsbridge(b,a):_dsbridge.call(b,a)},register:function(b,a){'object'==typeof b?Object.assign(window._dsf,b):window._dsf[b]=a}}}dsBridge=getJsBridge()";
 
 #define SuppressPerformSelectorLeakWarning(Stuff) \
 { \

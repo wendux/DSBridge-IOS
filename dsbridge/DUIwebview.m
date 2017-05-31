@@ -122,7 +122,7 @@ static NSHashTable* g_webViews = nil;
     if(!args){
         args=[[NSArray alloc] init];
     }
-    NSString *script=[NSString stringWithFormat:@"%@.apply(window,%@)",methodName,[JSBUtil objToJsonString:args]];
+    NSString *script=[NSString stringWithFormat:@"(window._dsf.%@||window.%@).apply(window._dsf||window,%@)",methodName,methodName,[JSBUtil objToJsonString:args]];
     [self evaluateJavaScript:script completionHandler:^(NSString * value){
         if(completionHandler) completionHandler(value);
     }];
