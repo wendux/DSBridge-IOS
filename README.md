@@ -6,6 +6,8 @@ DSBridge-IOS:https://github.com/wendux/DSBridge-IOS
 
 DSBridge-Android:https://github.com/wendux/DSBridge-Android
 
+更新指南：https://juejin.im/post/58eded595c497d0062cf972b
+
 ## Usage
 
 1. Implement API delegate class  in Object-C
