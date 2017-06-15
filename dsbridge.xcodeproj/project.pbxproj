@@ -28,6 +28,8 @@
 		818F0BCD1E18E6D200679925 /* libdsbridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 818F0B8E1E18C08100679925 /* libdsbridge.a */; };
 		818F0BD01E1A820B00679925 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BCF1E1A820B00679925 /* test.html */; };
 		81EBBFFC1EF24A7300D1E4C1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81EBBFFB1EF24A7300D1E4C1 /* JavaScriptCore.framework */; };
+		81EBBFFF1EF24DDE00D1E4C1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 81EBBFFD1EF24DDE00D1E4C1 /* README.md */; };
+		81EBC0001EF24DDE00D1E4C1 /* README-chs.md in Sources */ = {isa = PBXBuildFile; fileRef = 81EBBFFE1EF24DDE00D1E4C1 /* README-chs.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		818F0BCF1E1A820B00679925 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		81EBBFF71EF246BD00D1E4C1 /* dsBridge.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsBridge.podspec; sourceTree = "<group>"; };
 		81EBBFFB1EF24A7300D1E4C1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		81EBBFFD1EF24DDE00D1E4C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		81EBBFFE1EF24DDE00D1E4C1 /* README-chs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "README-chs.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 		818F0B851E18C08100679925 = {
 			isa = PBXGroup;
 			children = (
+				81EBBFFD1EF24DDE00D1E4C1 /* README.md */,
+				81EBBFFE1EF24DDE00D1E4C1 /* README-chs.md */,
 				81EBBFF71EF246BD00D1E4C1 /* dsBridge.podspec */,
 				818F0B901E18C08100679925 /* dsbridge */,
 				818F0B9F1E18C0AA00679925 /* dsbridgedemo */,
@@ -277,10 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81EBBFFF1EF24DDE00D1E4C1 /* README.md in Sources */,
 				818F0BC01E18C59200679925 /* JSBUtil.m in Sources */,
 				818F0BBD1E18C58000679925 /* DWebview.m in Sources */,
 				818F0BB71E18C3B800679925 /* DWKwebview.m in Sources */,
 				818F0BBA1E18C45E00679925 /* DUIwebview.m in Sources */,
+				81EBC0001EF24DDE00D1E4C1 /* README-chs.md in Sources */,
 				818F0B931E18C08100679925 /* dsbridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
