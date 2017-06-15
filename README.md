@@ -8,7 +8,7 @@ DSBridge-IOS:https://github.com/wendux/DSBridge-IOS
 
 DSBridge-Android:https://github.com/wendux/DSBridge-Android
 
-
+2.0更新列表：https://juejin.im/post/593fa055128fe1006aff700a
 
 ## Download
 
