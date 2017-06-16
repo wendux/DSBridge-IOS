@@ -152,9 +152,9 @@ There are three webviews available, DWKwebview、DUIwebview and DWebview， all 
 
  If you're using DUIwebview, don't set the delegate prop. because the delegate prop has been setted inner ,  please  set WebEventDelegate  instead ! 
 
-### Alert dialog
+### Alert/confirm/prompt
 
-In order to prevent unnecessary obstruction, the alert dialog was implemented asynchronously , that is to say, if you call alert in javascript , it will be returned directly no matter whether the user has to deal with. becase the code flow is not subject to the user operation no matter whether user  click ok button  or close the alert dialog. if you don't need this feature, you can custom the alert dialog by override "onJsAlert" callback in WebChromeClient class.
+For alert/confirm/prompt dialog, DSBridge has implemented them all by default.
 
 ### Finally
 

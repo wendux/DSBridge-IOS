@@ -10,6 +10,13 @@
 #import "JSBUtil.h"
 
 @implementation DWKwebview
+{
+    void(^alertHandler)(void);
+    void (^confirmHandler)(BOOL);
+    void (^promptHandler)(NSString *);
+    int dialogType;
+    UITextField *txtName;
+}
 
 /*
  // Only override drawRect: if you perform custom drawing.
@@ -21,6 +28,11 @@
 
 -(instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
 {
+    txtName=nil;
+    dialogType=0;
+    alertHandler=nil;
+    confirmHandler=nil;
+    promptHandler=nil;
     //NSString * js=@"function setupWebViewJavascriptBridge(b){var a={call:function(d,c){return prompt('_dspiercall='+d,c)}};b(a)};";
     
     NSString * js=[@"_dswk='_dsbridge=';" stringByAppendingString: INIT_SCRIPT];
@@ -63,16 +75,13 @@ completionHandler:(void (^)(NSString * _Nullable result))completionHandler
                              initiatedByFrame:frame
                             completionHandler:completionHandler];
         }else{
+            dialogType=3;
+            promptHandler=completionHandler;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:prompt message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-            UITextField *txtName = [alert textFieldAtIndex:0];
+            txtName = [alert textFieldAtIndex:0];
             txtName.text=defaultText;
             [alert show];
-            while (!confirmDone){
-                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-            }
-            confirmDone=false;
-            completionHandler([txtName text]);
         }
     }
 }
@@ -89,13 +98,14 @@ completionHandler:(void (^)(void))completionHandler
                          initiatedByFrame:frame
                         completionHandler:completionHandler];
     }else{
+        dialogType=1;
+        alertHandler=completionHandler;
         UIAlertView *alertView =
         [[UIAlertView alloc] initWithTitle:@"提示"
                                    message:message
-                                  delegate:nil
+                                  delegate:self
                          cancelButtonTitle:@"确定"
                          otherButtonTitles:nil,nil];
-        completionHandler();
         [alertView show];
     }
 }
@@ -110,6 +120,8 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
                         initiatedByFrame:frame
                        completionHandler:completionHandler];
     }else{
+        dialogType=2;
+        confirmHandler=completionHandler;
         UIAlertView *alertView =
         [[UIAlertView alloc] initWithTitle:@"提示"
                                    message:message
@@ -117,18 +129,26 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
                          cancelButtonTitle:@"取消"
                          otherButtonTitles:@"确定", nil];
         [alertView show];
-        while (!confirmDone){
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-        confirmDone=false;
-        completionHandler(confirmResult);
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    confirmDone=true;
-    confirmResult=buttonIndex==1?YES:NO;
+    if(dialogType==1 && alertHandler){
+        alertHandler();
+        alertHandler=nil;
+    }else if(dialogType==2 && confirmHandler){
+        confirmHandler(buttonIndex==1?YES:NO);
+        confirmHandler=nil;
+    }else if(dialogType==3 && promptHandler && txtName) {
+        if(buttonIndex==1){
+            promptHandler([txtName text]);
+        }else{
+             promptHandler(@"");
+        }
+        promptHandler=nil;
+        txtName=nil;
+    }
 }
 
 - (void)setJavascriptContextInitedListener:(void (^)(void))callback

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "dsBridge"
-  s.version      = "2.0.1"
+  s.version      = "2.0.2"
   s.summary      = "An ios bridge for calling functions synchronously and asynchronously between JavaScript and Object-C in WKWebView/UIWebView"
 
   # This description is used to generate tags and improve search results.
