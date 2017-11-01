@@ -46,20 +46,28 @@ pod "dsBridge"
 
 3. Call Object-C API in Javascript, and declare a global javascript function for the following  Object-c invocation.
 
-   ```javascript
+  - Init dsBridge
 
-   //Call synchronously 
-   var str=dsBridge.call("testSyn", {msg: "testSyn"});
-   //Call asynchronously
-   dsBridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
-    alert(v);
-   })
+     ```javascript
+     window._dsbridge&&_dsbridge.init();
+     ```
 
-   //Register javascrit function for Object-c invocation
-    dsBridge.register('addValue',function(r,l){
-        return r+l;
-    })
-   ```
+   - Call API
+
+     ```javascript
+
+     //Call synchronously 
+     var str=dsBridge.call("testSyn", {msg: "testSyn"});
+
+     //Call asynchronously
+     dsBridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
+       alert(v);
+     })
+     //Register javascrit function for Native invocation
+      dsBridge.register('addValue',function(l,r){
+          return l+r;
+      })
+     ```
 
 4. Call Javascript function in Object-C .
 
