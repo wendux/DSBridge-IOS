@@ -26,6 +26,7 @@ pod "dsBridge"
    //for synchronous invocation  
    - (NSString *) testSyn:(NSDictionary *) args
    {
+       // The return value type can only be  NSString
        return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
@@ -46,7 +47,7 @@ pod "dsBridge"
 
 3. Call Object-C API in Javascript, and declare a global javascript function for the following  Object-c invocation.
 
-  - Init dsBridge
+   - Init dsBridge
 
      ```javascript
      window._dsbridge&&_dsbridge.init();
@@ -111,7 +112,7 @@ function: javascript method body.
 
 In order to be compatible with IOS and Android, we make the following convention  on native api signature:
 
-1. The tye of return value must be NSString;  if not need, just return nil.
+1. The tye of return value must be **NSString**;  if not need, just return nil.
 2. The arguments  passed by   NSDictionary, if the API doesn't need argument, you still need declare the  argument. 
 
 ### Call javascript code
@@ -156,7 +157,7 @@ __block DWebview * _webview=webview;
 
 There are three webviews available, DWKwebview、DUIwebview and DWebview， all of them provide the same interface, you can user any one you want.  It is worth mentioning that the  DWebview is just a proxy of DWKwebview and DUIwebview, while the ios system vesion >=8.0 ,  DWKwebview will be used, otherwise, DUIwebview will be.
 
-### warnnig
+### Warnnig
 
  If you're using DUIwebview, don't set the delegate prop. because the delegate prop has been setted inner ,  please  set WebEventDelegate  instead ! 
 
