@@ -50,7 +50,11 @@ pod "dsBridge"
    - Init dsBridge
 
      ```javascript
-     window._dsbridge&&_dsbridge.init();
+     //cdn
+     //<script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+     //npm
+     //npm install dsbridge
+     var dsBridge=require("dsbridge")
      ```
 
    - Call API
