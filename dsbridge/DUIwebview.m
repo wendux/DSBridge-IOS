@@ -94,7 +94,11 @@ static NSHashTable* g_webViews = nil;
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    return YES;
+    if([WebEventDelegate respondsToSelector:NSSelectorFromString(@"shouldStartLoadWithRequest::")]){
+       return [WebEventDelegate shouldStartLoadWithRequest:request :navigationType];
+    }else{
+       return YES;
+    }
 }
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx

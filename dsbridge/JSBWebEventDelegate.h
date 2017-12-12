@@ -14,5 +14,6 @@ CF_ASSUME_NONNULL_BEGIN
 - (void) onPageStart:(NSString *)url;
 - (void) onpageFinished:(NSString *)url;
 - (void) onpageError:(NSString *)url :(NSString *) msg;
+- (BOOL) shouldStartLoadWithRequest:(NSURLRequest *)request :(UIWebViewNavigationType)navigationType;
 @end
 CF_ASSUME_NONNULL_END
