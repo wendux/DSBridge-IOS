@@ -1,10 +1,20 @@
 # DSBridge-v2.0
 
+[![](https://img.shields.io/cocoapods/v/dsBridge.svg?style=flat)](https://jitpack.io/#wendux/DSBridge-Android)   [![MIT Licence](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://opensource.org/licenses/mit-license.php)
+
 > DSBridge is currently the best Javascript bridge in the world , by which we can call functions synchronously and asynchronously between web and Native . Moreover, both android and ios are supported !
 
 DSBridge-IOS:https://github.com/wendux/DSBridge-IOS
 
 DSBridge-Android:https://github.com/wendux/DSBridge-Android
+
+2.0更新列表：https://juejin.im/post/593fa055128fe1006aff700a
+
+## Download
+
+```objective-c
+pod "dsBridge"
+```
 
 ## Usage
 
@@ -16,6 +26,7 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
    //for synchronous invocation  
    - (NSString *) testSyn:(NSDictionary *) args
    {
+       // The return value type can only be  NSString
        return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
@@ -36,20 +47,32 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
 
 3. Call Object-C API in Javascript, and declare a global javascript function for the following  Object-c invocation.
 
-   ```javascript
+   - Init dsBridge
 
-   //Call synchronously 
-   var str=dsBridge.call("testSyn", {msg: "testSyn"});
-   //Call asynchronously
-   dsBridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
-    alert(v);
-   })
+     ```javascript
+     //cdn
+     //<script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+     //npm
+     //npm install dsbridge
+     var dsBridge=require("dsbridge")
+     ```
 
-   //Register javascrit function for Object-c invocation
-    dsBridge.register('addValue',function(r,l){
-        return r+l;
-    })
-   ```
+   - Call API
+
+     ```javascript
+
+     //Call synchronously 
+     var str=dsBridge.call("testSyn", {msg: "testSyn"});
+
+     //Call asynchronously
+     dsBridge.call("testAsyn", {msg: "testAsyn"}, function (v) {
+       alert(v);
+     })
+     //Register javascrit function for Native invocation
+      dsBridge.register('addValue',function(l,r){
+          return l+r;
+      })
+     ```
 
 4. Call Javascript function in Object-C .
 
@@ -93,7 +116,7 @@ function: javascript method body.
 
 In order to be compatible with IOS and Android, we make the following convention  on native api signature:
 
-1. The tye of return value must be NSString;  if not need, just return nil.
+1. The tye of return value must be **NSString**;  if not need, just return nil.
 2. The arguments  passed by   NSDictionary, if the API doesn't need argument, you still need declare the  argument. 
 
 ### Call javascript code
@@ -138,13 +161,13 @@ __block DWebview * _webview=webview;
 
 There are three webviews available, DWKwebview、DUIwebview and DWebview， all of them provide the same interface, you can user any one you want.  It is worth mentioning that the  DWebview is just a proxy of DWKwebview and DUIwebview, while the ios system vesion >=8.0 ,  DWKwebview will be used, otherwise, DUIwebview will be.
 
-### warnnig
+### Warnnig
 
  If you're using DUIwebview, don't set the delegate prop. because the delegate prop has been setted inner ,  please  set WebEventDelegate  instead ! 
 
-### Alert dialog
+### Alert/confirm/prompt
 
-In order to prevent unnecessary obstruction, the alert dialog was implemented asynchronously , that is to say, if you call alert in javascript , it will be returned directly no matter whether the user has to deal with. becase the code flow is not subject to the user operation no matter whether user  click ok button  or close the alert dialog. if you don't need this feature, you can custom the alert dialog by override "onJsAlert" callback in WebChromeClient class.
+For alert/confirm/prompt dialog, DSBridge has implemented them all by default.
 
 ### Finally
 

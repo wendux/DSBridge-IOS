@@ -10,8 +10,6 @@
 
 @interface DWKwebview : WKWebView <WKUIDelegate,WKNavigationDelegate,UIAlertViewDelegate >
 {
-    bool confirmDone;
-    BOOL confirmResult;
     void(^javascriptContextInitedListener)(void);
     
 }
