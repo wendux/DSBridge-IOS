@@ -1,6 +1,5 @@
 //
 //  JsApiTest.m
-//  dspider
 //
 //  Created by 杜文 on 16/12/30.
 //  Copyright © 2016年 杜文. All rights reserved.
@@ -17,14 +16,14 @@
 
 @implementation JsApiTest
 
-- (NSString *) testSyn:(NSDictionary *) args
+- (NSString *) testSyn:(NSString *) msg
 {
-    return [(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ syn call]"];
+    return [msg stringByAppendingString:@"[ syn call]"];
 }
 
-- (void) testAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+- (void) testAsyn:(NSString *) msg :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
 {
-    completionHandler([(NSString *)[args valueForKey:@"msg"] stringByAppendingString:@"[ asyn call]"],YES);
+    completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
 }
 
 - (NSString *)testNoArgSyn:(NSDictionary *) args
@@ -41,7 +40,11 @@
 {
     value=10;
     hanlder=completionHandler;
-    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
+                                              target:self
+                                            selector:@selector(onTimer:)
+                                            userInfo:nil
+                                             repeats:YES];
 }
 
 -(void)onTimer:t{

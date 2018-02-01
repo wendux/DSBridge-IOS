@@ -8,8 +8,4 @@
 
 #import <Foundation/Foundation.h>
 #import "JSBUtil.h"
-#import "DWebview.h"
-
-@interface jsbridge : NSObject
-
-@end
+#import "DWKWebView.h"
