@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadUrl: (NSString *) url;
 - (void)loadRequest:(NSURLRequest * )request;
-- (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
+- (void)loadHTMLString:(NSString *)string baseURL:(NSURL * _Nullable)baseURL;
 - (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
 
 - (void)stopLoading;

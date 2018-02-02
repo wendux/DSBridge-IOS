@@ -13,7 +13,7 @@ DSBridge-Android:https://github.com/wendux/DSBridge-Android
 ## Download
 
 ```objective-c
-pod "dsBridge"
+pod "dsBridge","2.0.6"
 ```
 
 ## Usage
@@ -51,9 +51,9 @@ pod "dsBridge"
 
      ```javascript
      //cdn
-     //<script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+     //<script src="https://unpkg.com/dsbridge@2.0.0/dist/dsbridge.js"> </script>
      //npm
-     //npm install dsbridge
+     //npm install dsbridge@2.0.0
      var dsBridge=require("dsbridge")
      ```
 
