@@ -9,7 +9,7 @@
 
 @interface JsApiTest(){
   NSTimer * timer ;
-  void(^hanlder)(NSString *s,BOOL isComplete);
+  void(^hanlder)(id value,BOOL isComplete);
   int value;
 }
 @end
@@ -36,7 +36,7 @@
     completionHandler(@"testNoArgAsyn called [ asyn call]",YES);
 }
 
-- ( void )callProgress:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
 {
     value=10;
     hanlder=completionHandler;
@@ -49,7 +49,7 @@
 
 -(void)onTimer:t{
     if(value!=-1){
-        hanlder([NSString stringWithFormat:@"%d",value--],NO);
+        hanlder([NSNumber numberWithInt:value--],NO);
     }else{
         hanlder(@"",YES);
         [timer invalidate];

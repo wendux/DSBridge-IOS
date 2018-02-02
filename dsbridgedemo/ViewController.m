@@ -26,8 +26,8 @@
     // register api object with namespace "echo"
     [dwebview addJavascriptObject:[[JsEchoApi alloc] init] namespace:@"echo"];
     
-    // open debug model
-    [dwebview setDebugModel:true];
+    // open debug mode
+    [dwebview setDebugMode:true];
     
     [dwebview customJavascriptDialogLabelTitles:@{@"alertTitle":@"Notification",@"alertBtn":@"OK"}];
     

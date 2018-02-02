@@ -37,9 +37,9 @@
 // Test whether the handler exist in javascript
 - (void) hasJavascriptMethod:(NSString * _Nonnull) handlerName methodExistCallback:(void(^ _Nullable)(bool exist))callback;
 
-// Set debug model. if in debug model, some errors will be prompted by a dialog
+// Set debug mode. if in debug mode, some errors will be prompted by a dialog
 // and the exception caused by the native handlers will not be captured.
-- (void) setDebugModel:(bool) debug;
+- (void) setDebugMode:(bool) debug;
 
 - (void) disableJavascriptDialogBlock:(bool) disable;
 

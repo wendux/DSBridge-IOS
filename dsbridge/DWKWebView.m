@@ -288,7 +288,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     javascriptCloseWindowListener=callback;
 }
 
-- (void)setDebugModel:(bool)debug{
+- (void)setDebugMode:(bool)debug{
     isDebug=debug;
 }
 
