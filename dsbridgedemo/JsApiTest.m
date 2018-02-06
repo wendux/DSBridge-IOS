@@ -51,7 +51,7 @@
     if(value!=-1){
         hanlder([NSNumber numberWithInt:value--],NO);
     }else{
-        hanlder(@"",YES);
+        hanlder(0,YES);
         [timer invalidate];
     }
 }

@@ -36,6 +36,7 @@
         //NSLog(@"%@",strName);
         [arr addObject:strName];
     }
+    free(methods);
     return arr;
 }
 

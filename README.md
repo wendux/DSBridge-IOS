@@ -1,13 +1,39 @@
 # DSBridge
 
-[![](https://img.shields.io/cocoapods/v/dsBridge.svg?style=flat)](https://jitpack.io/#wendux/DSBridge-Android)   [![MIT Licence](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://opensource.org/licenses/mit-license.php)
+[![](https://img.shields.io/cocoapods/v/dsBridge.svg?style=flat)](https://jitpack.io/#wendux/DSBridge-Android)   [![MIT Licence](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://opensource.org/licenses/mit-license.php) [![](https://travis-ci.org/wendux/DSBridge-IOS.svg?branch=master)](https://travis-ci.org/wendux/DSBridge-IOS)
 > Modern cross-platform JavaScript bridge, through which you can invoke each other's functions synchronously or asynchronously between JavaScript and native applications.
 
 ### Notice
 
-DSBridge v3.0 is a milestone. Compared with v2.0.X, we have made a lot of changes. Note that V3.0 is **incompatible** with V2.0, but v2.0 will continue to maintain. If you are a new user, use >=v3.0.
+DSBridge v3.0 is a milestone version. Compared with v2.0, we have made a lot of changes. Note that v3.0 is **incompatible** with v2.0, but v2.0 will continue to maintain. If you are a new user, use >=v3.0.
 
 [DSBridge v3.0.0 change list](https://github.com/wendux/DSBridge-IOS/issues/25)  
+
+
+
+## Features
+
+1. The three ends of Android, IOS and Javascript are easy to use, light and powerful, safe and strong
+
+2. Both synchronous and asynchronous calls are supported
+
+3. Support **API Object**, which centrally implements  APIs in a Java Class or a Javascript object 
+
+4. Support API namespace
+
+5. Support debug mode
+
+6. Support the test of whether API exists
+
+7. Support **Progress Callback**: one call, multiple returns
+
+8. Support event listener for Javascript to close the page
+
+9. Support Modal and Modeless popup box for javascript
+
+10. Support the X5 webcore of Tencent  for Android
+
+   ​
 
 ## Installation
 
@@ -15,11 +41,15 @@ DSBridge v3.0 is a milestone. Compared with v2.0.X, we have made a lot of change
 pod "dsBridge"
 ```
 
+
+
 ## Examples
 
 See the `dsbridgedemo/` package. run the `app` project and to see it in action.
 
 To use a dsBridge in your own project:
+
+
 
 ## Usage
 
@@ -118,9 +148,52 @@ In debug mode, some errors will be prompted by a popup dialog , and the exceptio
 [dwebview setDebugMode:true];
 ```
 
+
+
+## Progress Callback
+
+Normally, when a API is called to end, it returns a result, which corresponds one by one. But sometimes a call need to repeatedly return multipule times,  Suppose that on the Native side, there is  a API to download the file, in the process of downloading, it will send the progress information to  Javascript  many times, then Javascript will  display  the progress information on the H5 page. Oh...You will find it is difficult to achieve this function. Fortunately, DSBridge supports **Progress Callback**. You can be very simple and convenient to implement a call that needs to be returned many times. Here's an example of a countdown：
+
+In Object-c 
+
+```objective-c
+- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
+{
+    value=10;
+    hanlder=completionHandler;
+    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
+                                              target:self
+                                            selector:@selector(onTimer:)
+                                            userInfo:nil
+                                             repeats:YES];
+}
+-(void)onTimer:t{
+    if(value!=-1){
+        hanlder([NSNumber numberWithInt:value--],NO);
+    }else{
+        hanlder(@"",YES);
+        [timer invalidate];
+    }
+}
+```
+
+In Javascript
+
+```javascript
+dsBridge.call("callProgress", function (value) {
+    document.getElementById("progress").innerText = value
+})
+```
+
+For the complete sample code, please refer to the demo project.
+
+
+
 ## Javascript popup box
 
-For Javascript popup box functions (alert/confirm/prompt), DSBridge has implemented them  all  by default. the default dialog label text language is Chinese, you can custom the text by calling `customJavascriptDialogLabelTitles`.  If you still want to implement them by yourself , set the `DSUIDelegate`  property which is a proxy of `WKUIDelegate`.
+For Javascript popup box functions (alert/confirm/prompt), DSBridge has implemented them  all  by default. the default dialog label text language is Chinese, you can custom the text by calling `customJavascriptDialogLabelTitles`.  If you still want to implement them by yourself , set the `DSUIDelegate`  property which is a proxy of `WKUIDelegate`. 
+
+Note That the default dialog box  implemented by DSBridge is modal. This will block the UI thread. If you need modeless, please refer to `disableJavascriptDialogBlock`.
 
 
 
@@ -171,7 +244,7 @@ dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
 
 ##### `removeJavascriptObject:(NSString *) namespace`
 
-Remove the  Java API object with supplied namespace.
+Remove the  Object-c API object with supplied namespace.
 
 
 

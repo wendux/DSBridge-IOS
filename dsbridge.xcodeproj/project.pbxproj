@@ -25,6 +25,7 @@
 		818F0BC91E18DD3600679925 /* JsApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BC81E18DD3600679925 /* JsApiTest.m */; };
 		818F0BCD1E18E6D200679925 /* libdsbridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 818F0B8E1E18C08100679925 /* libdsbridge.a */; };
 		818F0BD01E1A820B00679925 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 818F0BCF1E1A820B00679925 /* test.html */; };
+		81CFC8602029456C00CF9D83 /* readme-chs.md in Sources */ = {isa = PBXBuildFile; fileRef = 81CFC85F2029456C00CF9D83 /* readme-chs.md */; };
 		81EBBFFF1EF24DDE00D1E4C1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 81EBBFFD1EF24DDE00D1E4C1 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		818F0BCB1E18DE7100679925 /* JsApiTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsApiTest.h; sourceTree = "<group>"; };
 		818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBWebEventDelegate.h; sourceTree = "<group>"; };
 		818F0BCF1E1A820B00679925 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		81CFC85F2029456C00CF9D83 /* readme-chs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "readme-chs.md"; sourceTree = "<group>"; };
+		81CFC861202953CB00CF9D83 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		81EBBFF71EF246BD00D1E4C1 /* dsBridge.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsBridge.podspec; sourceTree = "<group>"; };
 		81EBBFFD1EF24DDE00D1E4C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +110,8 @@
 		818F0B851E18C08100679925 = {
 			isa = PBXGroup;
 			children = (
+				81CFC861202953CB00CF9D83 /* .travis.yml */,
+				81CFC85F2029456C00CF9D83 /* readme-chs.md */,
 				81EBBFFD1EF24DDE00D1E4C1 /* README.md */,
 				81EBBFF71EF246BD00D1E4C1 /* dsBridge.podspec */,
 				818F0B901E18C08100679925 /* dsbridge */,
@@ -275,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81EBBFFF1EF24DDE00D1E4C1 /* README.md in Sources */,
+				81CFC8602029456C00CF9D83 /* readme-chs.md in Sources */,
 				818F0BC01E18C59200679925 /* JSBUtil.m in Sources */,
 				818F0BB71E18C3B800679925 /* DWKWebView.m in Sources */,
 				815612EE202041B000C4F5CD /* DSCallInfo.m in Sources */,
