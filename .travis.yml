@@ -1,3 +1,6 @@
 language: objective-c
 xcode_project: dsbridge.xcodeproj
 xcode_scheme: dsbridge
+osx_image: xcode9.1
+script:
+    - xcodebuild clean build  -project dsbridge.xcodeproj -scheme dsbridge
