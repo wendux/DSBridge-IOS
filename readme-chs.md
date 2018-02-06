@@ -92,7 +92,7 @@ pod "dsBridge"
       })
      ```
 
-4. 在Object-c中 Javascript API 
+4. 在Object-c中调用Javascript API 
 
     ```objective-c
        [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
