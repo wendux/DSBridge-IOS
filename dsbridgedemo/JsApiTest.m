@@ -56,4 +56,14 @@
     }
 }
 
+/**
+ * Note: This method is for Fly.js
+ * In browser, Ajax requests are sent by browser, but Fly can
+ * redirect requests to native, more about Fly see  https://github.com/wendux/fly
+ * @param requestInfo passed by fly.js, more detail reference https://wendux.github.io/dist/#/doc/flyio-en/native
+ */
+-(void)onAjaxRequest:(NSDictionary *) requestInfo  :(void (^)(NSString * _Nullable result,BOOL complete))completionHandle{
+   
+}
+
 @end

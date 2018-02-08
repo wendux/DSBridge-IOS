@@ -94,6 +94,7 @@
     [dwebview setJavascriptCloseWindowListener:^{
         NSLog(@"window.close called");
     } ];
+
 }
 
 
