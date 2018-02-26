@@ -186,6 +186,12 @@ DSBridge已经实现了 Javascript的弹出框函数(alert/confirm/prompt)，这
 
 
 
+# WKUIDelegate
+
+在 `DWKWebView ` 中，请使用` DSUIDelegate` 代替 `UIDelegate` , 因为在`DWKWebView ` 内部 `UIDelegate`已经设置过了，而 `DSUIDelegate` 正是  `UIDelegate` 的一个代理。
+
+
+
 ## API 列表
 
 ### Object-C API

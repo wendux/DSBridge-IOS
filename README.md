@@ -208,6 +208,12 @@ Note That the default dialog box  implemented by DSBridge is modal. This will bl
 
 
 
+# WKUIDelegate
+
+In `DWKWebView ` , please use ` DSUIDelegate` instead of `UIDelegate` , because `UIDelegate` has already been set inner  `DWKWebView ` , `DSUIDelegate` is a proxy of `UIDelegate` .
+
+
+
 ## API Reference
 
 ### Object-C API
