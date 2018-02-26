@@ -8,7 +8,7 @@
 
 #import <WebKit/WebKit.h>
 
-@interface DWKWebView : WKWebView <WKUIDelegate,WKNavigationDelegate,UIAlertViewDelegate >
+@interface DWKWebView : WKWebView <WKUIDelegate>
 
 @property (nullable, nonatomic, weak) id <WKUIDelegate> DSUIDelegate;
 

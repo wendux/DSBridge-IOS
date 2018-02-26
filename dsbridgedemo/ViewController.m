@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "dsbridge.h"
 #import <WebKit/WebKit.h>
 #import "JsEchoApi.h"
 @interface ViewController ()
@@ -30,6 +29,8 @@
     [dwebview setDebugMode:true];
     
     [dwebview customJavascriptDialogLabelTitles:@{@"alertTitle":@"Notification",@"alertBtn":@"OK"}];
+    
+    dwebview.navigationDelegate=self;
     
     // load test.html
     NSString *path = [[NSBundle mainBundle] bundlePath];

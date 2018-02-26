@@ -172,6 +172,45 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     }
 }
 
+- (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
+                              @selector(webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:)]){
+        return [self.DSUIDelegate webView:webView createWebViewWithConfiguration:configuration forNavigationAction:navigationAction windowFeatures:windowFeatures];
+    }
+    return  nil;
+}
+
+- (void)webViewDidClose:(WKWebView *)webView{
+    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
+                              @selector(webViewDidClose:)]){
+        [self.DSUIDelegate webViewDidClose:webView];
+    }
+}
+
+- (BOOL)webView:(WKWebView *)webView shouldPreviewElement:(WKPreviewElementInfo *)elementInfo{
+    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
+                              @selector(webView:shouldPreviewElement:)]){
+        return [self.DSUIDelegate webView:webView shouldPreviewElement:elementInfo];
+    }
+    return NO;
+}
+
+- (UIViewController *)webView:(WKWebView *)webView previewingViewControllerForElement:(WKPreviewElementInfo *)elementInfo defaultActions:(NSArray<id<WKPreviewActionItem>> *)previewActions{
+    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
+                              @selector(webView:previewingViewControllerForElement:defaultActions:)]){
+        return [self.DSUIDelegate webView:webView previewingViewControllerForElement:elementInfo defaultActions:previewActions];
+    }
+    return  nil;
+}
+
+
+- (void)webView:(WKWebView *)webView commitPreviewingViewController:(UIViewController *)previewingViewController{
+    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
+                              @selector(webView:commitPreviewingViewController:)]){
+        return [self.DSUIDelegate webView:webView commitPreviewingViewController:previewingViewController];
+    }
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(dialogType==1 && alertHandler){
