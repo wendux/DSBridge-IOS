@@ -49,7 +49,7 @@
     isDebug=false;
     dialogTextDic=@{};
 
-    WKUserScript *script = [[WKUserScript alloc] initWithSource:@"_dswk='_dsbridge=';"
+    WKUserScript *script = [[WKUserScript alloc] initWithSource:@"window._dswk=true;"
                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
                                                forMainFrameOnly:YES];
     [configuration.userContentController addUserScript:script];

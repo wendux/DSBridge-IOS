@@ -73,9 +73,9 @@ pod "dsBridge"
 
      ```javascript
      //cdn方式引入初始化代码(中国地区慢，建议下载到本地工程)
-     //<script src="https://unpkg.com/dsbridge@3.0.7/dist/dsbridge.js"> </script>
+     //<script src="https://unpkg.com/dsbridge@3.0.8/dist/dsbridge.js"> </script>
      //npm方式安装初始化代码
-     //npm install dsbridge@3.0.7
+     //npm install dsbridge@3.0.8
      var dsBridge=require("dsbridge")
      ```
 
@@ -476,6 +476,6 @@ dsBridge.disableJavascriptDialogBlock(false)
 
 ## 最后
 
-如果你瞎换 DSBridge, 欢迎star，以便更多的人知道它, 谢谢 !
+如果你喜欢 DSBridge, 欢迎star，以便更多的人知道它, 谢谢 !
 
 
