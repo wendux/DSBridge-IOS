@@ -73,9 +73,9 @@ pod "dsBridge"
 
      ```javascript
      //cdn方式引入初始化代码(中国地区慢，建议下载到本地工程)
-     //<script src="https://unpkg.com/dsbridge@3.0.8/dist/dsbridge.js"> </script>
+     //<script src="https://unpkg.com/dsbridge@3.1.1/dist/dsbridge.js"> </script>
      //npm方式安装初始化代码
-     //npm install dsbridge@3.0.8
+     //npm install dsbridge@3.1.1
      var dsBridge=require("dsbridge")
      ```
 
