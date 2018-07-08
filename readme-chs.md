@@ -118,9 +118,12 @@ pod "dsBridge"
 
 2. 异步 API.
 
-   **` (void) handler(id arg, (void (^)( id result,BOOL complete))completionHandler）`**
+   **` (void) handler:(id)arg :(void (^)( id result,BOOL complete))completionHandler）`**
 
-   ​
+> 注意：API名字**不能**以"init"开始，因为oc的类中是被预留的, 如果以"init"开始，执行结果将无法预期(很多时候会crash)。
+>
+
+   
 
 ## 命名空间
 

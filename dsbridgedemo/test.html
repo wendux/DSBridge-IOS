@@ -47,12 +47,13 @@
 
 <script>
     
+
     function callSyn() {
-        alert(dsBridge.call("testSyn", "testSyn"))
+      alert(dsBridge.call("testSyn", "testSyn--"))
     }
 
     function callAsyn() {
-        dsBridge.call("testAsyn","testAsyn", function (v) {
+        dsBridge.call("testAsyn","testAsyn--", function (v) {
             alert(v)
         })
     }

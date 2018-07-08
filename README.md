@@ -138,13 +138,14 @@ In order to be compatible with IOS , we make the following convention  on Object
 
    **`(id) handler:(id) msg`**
 
-   The argument type can be any class  type, but  the type of return value can't be  **void**.
+   -  The argument type can be any class  type, but  the type of return value can't be  **void**.
 
 2. For asynchronous API.
 
-   **` (void) handler(id arg, (void (^)( id result,BOOL complete))completionHandler）`**
+**` (void) handler:(id) arg :(void (^)( id result,BOOL complete))completionHandler）`**
 
-   ​
+> Attention: API name can't start with "init", because it is reserved in OC class.
+>
 
 ## Namespace
 

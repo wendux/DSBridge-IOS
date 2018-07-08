@@ -53,7 +53,7 @@
                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
                                                forMainFrameOnly:YES];
     [configuration.userContentController addUserScript:script];
-    self = [super initWithFrame:frame configuration: configuration];
+    self = [super initWithFrame:frame configuration: configuration]; 
     if (self) {
         super.UIDelegate=self;
     }
@@ -246,7 +246,8 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 -(NSString *)call:(NSString*) method :(NSString*) argStr
 {
     NSArray *nameStr=[JSBUtil parseNamespace:[method stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    id JavascriptInterfaceObject= [javaScriptNamespaceInterfaces  valueForKey:nameStr[0]];
+    //id JavascriptInterfaceObject= [javaScriptNamespaceInterfaces  objectForKey:nameStr[0]];
+    id JavascriptInterfaceObject=javaScriptNamespaceInterfaces[nameStr[0]];
     NSString *error=[NSString stringWithFormat:@"Error! \n Method %@ is not invoked, since there is not a implementation for it",method];
     NSMutableDictionary*result =[NSMutableDictionary dictionaryWithDictionary:@{@"code":@-1,@"data":@""}];
     if(!JavascriptInterfaceObject){
@@ -337,6 +338,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     [self loadRequest:request];
 }
 
+
 - (void)callHandler:(NSString *)methodName arguments:(NSArray *)args{
     [self callHandler:methodName arguments:args completionHandler:nil];
 }
@@ -426,7 +428,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 {
     NSArray *nameStr=[JSBUtil parseNamespace:[args[@"name"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     NSString * type= [args[@"type"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    id JavascriptInterfaceObject= [javaScriptNamespaceInterfaces valueForKey:nameStr[0]];
+    id JavascriptInterfaceObject= [javaScriptNamespaceInterfaces objectForKey:nameStr[0]];
     if(JavascriptInterfaceObject){
         bool syn=[JSBUtil methodByNameArg:1 selName:nameStr[1] class:[JavascriptInterfaceObject class]]!=nil;
         bool asyn=[JSBUtil methodByNameArg:2 selName:nameStr[1] class:[JavascriptInterfaceObject class]]!=nil;
