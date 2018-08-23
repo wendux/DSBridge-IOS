@@ -14,6 +14,12 @@
 {
     NSString *jsonString = nil;
     NSError *error;
+    
+    // judgement ---HaoCold 2018-08-23 09:42:09
+    if (![NSJSONSerialization isValidJSONObject:dict]) {
+        return @"{}";
+    }
+    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     if (! jsonData) {
         return @"{}";
