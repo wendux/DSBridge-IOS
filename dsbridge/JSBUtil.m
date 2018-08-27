@@ -24,20 +24,24 @@
 }
 
 //get this class all method
-+(NSArray *)allMethodFromClass:(Class)class
-{
-    NSMutableArray *arr = [NSMutableArray array];
-    u_int count;
-    Method *methods = class_copyMethodList(class, &count);
-    for (int i =0; i<count; i++) {
-        SEL name1 = method_getName(methods[i]);
-        const char *selName= sel_getName(name1);
-        NSString *strName = [NSString stringWithCString:selName encoding:NSUTF8StringEncoding];
-        //NSLog(@"%@",strName);
-        [arr addObject:strName];
++ (NSArray *)allMethodFromClass:(Class)class {
+    NSMutableArray *methods = [NSMutableArray array];
+    while (class) {
+        unsigned int count = 0;
+        Method *method = class_copyMethodList(class, &count);
+        for (unsigned int i = 0; i < count; i++) {
+            SEL name1 = method_getName(method[i]);
+            const char *selName= sel_getName(name1);
+            NSString *strName = [NSString stringWithCString:selName encoding:NSUTF8StringEncoding];
+            [methods addObject:strName];
+        }
+        free(method);
+        
+        Class cls = class_getSuperclass(class);
+        class = [NSStringFromClass(cls) isEqualToString:NSStringFromClass([NSObject class])] ? nil : cls;
     }
-    free(methods);
-    return arr;
+    
+    return [NSArray arrayWithArray:methods];
 }
 
 //return method name for xxx: or xxx:handle:
