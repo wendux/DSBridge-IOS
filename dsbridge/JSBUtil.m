@@ -49,9 +49,13 @@
         for (int i=0; i<arr.count; i++) {
             NSString *method = arr[i];
             NSArray *tmpArr = [method componentsSeparatedByString:@":"];
-            if ([method hasPrefix:selName]&&tmpArr.count==(argNum+1)) {
-                result = method;
-                return result;
+            NSRange range = [method rangeOfString:@":"];
+            if (range.length > 0) {
+                NSString *methodName = [method substringWithRange:NSMakeRange(0, range.location)];
+                if ([methodName isEqualToString:selName] && tmpArr.count == (argNum + 1)) {
+                    result = method;
+                    return result;
+                }
             }
         }
     }

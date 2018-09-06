@@ -11,7 +11,6 @@
 		815612EE202041B000C4F5CD /* DSCallInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 815612ED202041B000C4F5CD /* DSCallInfo.m */; };
 		815612F12022E42D00C4F5CD /* JsEchoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 815612F02022E42D00C4F5CD /* JsEchoApi.m */; };
 		815FCC931E1CE48F0073CA79 /* JSBUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BBE1E18C59200679925 /* JSBUtil.h */; };
-		815FCC941E1CE4E70073CA79 /* JSBWebEventDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */; };
 		818F0B941E18C08100679925 /* dsbridge.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 818F0B911E18C08100679925 /* dsbridge.h */; };
 		818F0BA21E18C0AA00679925 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA11E18C0AA00679925 /* main.m */; };
 		818F0BA51E18C0AA00679925 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F0BA41E18C0AA00679925 /* AppDelegate.m */; };
@@ -47,7 +46,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				815FCC941E1CE4E70073CA79 /* JSBWebEventDelegate.h in CopyFiles */,
 				815FCC931E1CE48F0073CA79 /* JSBUtil.h in CopyFiles */,
 				818F0BC41E18D44A00679925 /* DWKWebView.h in CopyFiles */,
 				818F0B941E18C08100679925 /* dsbridge.h in CopyFiles */,
@@ -81,7 +79,6 @@
 		818F0BBF1E18C59200679925 /* JSBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBUtil.m; sourceTree = "<group>"; };
 		818F0BC81E18DD3600679925 /* JsApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsApiTest.m; sourceTree = "<group>"; };
 		818F0BCB1E18DE7100679925 /* JsApiTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsApiTest.h; sourceTree = "<group>"; };
-		818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBWebEventDelegate.h; sourceTree = "<group>"; };
 		818F0BCF1E1A820B00679925 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		81CFC85F2029456C00CF9D83 /* readme-chs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "readme-chs.md"; sourceTree = "<group>"; };
 		81CFC861202953CB00CF9D83 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 				818F0B911E18C08100679925 /* dsbridge.h */,
 				818F0BBE1E18C59200679925 /* JSBUtil.h */,
 				818F0BBF1E18C59200679925 /* JSBUtil.m */,
-				818F0BCE1E1A3EEE00679925 /* JSBWebEventDelegate.h */,
 				815612E92020304600C4F5CD /* InternalApis.h */,
 				815612EA2020304600C4F5CD /* InternalApis.m */,
 				815612EC202041B000C4F5CD /* DSCallInfo.h */,

@@ -18,6 +18,7 @@
 
 - (NSString *) testSyn:(NSString *) msg
 {
+    //return nil;
     return [msg stringByAppendingString:@"[ syn call]"];
 }
 
