@@ -259,7 +259,11 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
         SEL sel=NSSelectorFromString(methodOne);
         SEL selasyn=NSSelectorFromString(methodTwo);
         NSDictionary * args=[JSBUtil jsonStringToObject:argStr];
-        NSString *arg=args[@"data"];
+        id arg=args[@"data"];
+        if(arg==[NSNull null]){
+            arg=nil;
+        }
+        //if(arg)
         NSString * cb;
         do{
             if(args && (cb= args[@"_dscbstub"])){
@@ -293,6 +297,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
                         }
                         
                     };
+                  
                     SuppressPerformSelectorLeakWarning(
                                                        [JavascriptInterfaceObject performSelector:selasyn withObject:arg withObject:completionHandler];
                                                        

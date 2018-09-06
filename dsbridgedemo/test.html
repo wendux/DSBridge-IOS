@@ -49,12 +49,11 @@
     
 
     function callSyn() {
-      alert(dsBridge.call("testSyn", "testSyn--"))
-      prompt("你好","默认文本")
+      alert(dsBridge.call("testSyn", "hello"))
     }
 
     function callAsyn() {
-        dsBridge.call("testAsyn","testAsyn--", function (v) {
+        dsBridge.call("testAsyn","hello", function (v) {
             alert(v)
         })
     }
