@@ -129,7 +129,7 @@ pod "dsBridge"
 
 在 Swift中，你应该按照如下方式声明APIs:
 
-```
+```swift
 //必须给第一个参数前添加下划线"_"来显式忽略参数名。
 @objc func testSyn( _ arg:String) -> String {
 	return String(format:"%@[Swift sync call:%@]", arg, "test")

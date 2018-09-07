@@ -150,7 +150,7 @@ In order to be compatible with IOS , we make the following convention  on Object
 
 In Swift, you should declare APIs as follows:
 
-```
+```swift
 //MUST USE "_" to ignore the first argument name explicitly。
 @objc func testSyn( _ arg:String) -> String {
 	return String(format:"%@[Swift sync call:%@]", arg, "test")
