@@ -142,10 +142,29 @@ In order to be compatible with IOS , we make the following convention  on Object
 
 2. For asynchronous API.
 
-**` (void) handler:(id) arg :(void (^)( id result,BOOL complete))completionHandler）`**
+     **` (void) handler:(id) arg :(void (^)( id result,BOOL complete))completionHandler）`**
 
-> Attention: API name can't start with "init", because it is reserved in OC class.
->
+   > Attention: API name can't start with "init", because it is reserved in OC class.
+
+## Using in Swift
+
+In Swift, you should declare APIs as follows:
+
+```
+//MUST USE "_" to ignore the first argument name explicitly。
+@objc func testSyn( _ arg:String) -> String {
+	return String(format:"%@[Swift sync call:%@]", arg, "test")
+}
+
+@objc func testAsyn( _ arg:String, handler: (String, Bool)->Void) {
+	handler(String(format:"%@[Swift async call:%@]", arg, "test"), true)
+}
+```
+
+Two points you should keep in mind:
+
+- Must add "@objc" to Swift API.
+- Must  use "_"  to ignore the first argument name explicitly
 
 ## Namespace
 

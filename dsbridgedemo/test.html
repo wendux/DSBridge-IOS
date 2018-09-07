@@ -32,6 +32,8 @@
 <body>
 <div class="btn" onclick="callSyn()">Synchronous call</div>
 <div class="btn" onclick="callAsyn()">Asynchronous call</div>
+<div class="btn" onclick="callSynSwift()">Syn call (swift)</div>
+<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>
 <div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>
 <div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>
 <div class="btn" onclick="echoSyn()">echo.syn</div>
@@ -58,6 +60,15 @@
         })
     }
 
+function callSynSwift() {
+    alert(dsBridge.call("swift.testSyn", "hello"))
+}
+
+function callAsynSwift() {
+    dsBridge.call("swift.testAsyn","hello", function (v) {
+                  alert(v)
+                  })
+}
 
     function callAsyn_() {
         for (var i = 0; i < 2000; i++) {

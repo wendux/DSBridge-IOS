@@ -114,7 +114,7 @@ pod "dsBridge"
 
    **`(id) handler:(id) msg`**
 
-   参数可以是任何类型, 但是返回值类型不能为 **void**.
+   参数可以是任何类型, 但是返回值类型不能为 **void。** **如果不需要参数，也必须声明**，声明后不适用就行。
 
 2. 异步 API.
 
@@ -124,6 +124,26 @@ pod "dsBridge"
 >
 
    
+
+## 在Swift中使用
+
+在 Swift中，你应该按照如下方式声明APIs:
+
+```
+//必须给第一个参数前添加下划线"_"来显式忽略参数名。
+@objc func testSyn( _ arg:String) -> String {
+	return String(format:"%@[Swift sync call:%@]", arg, "test")
+}
+
+@objc func testAsyn( _ arg:String, handler: (String, Bool)->Void) {
+	handler(String(format:"%@[Swift async call:%@]", arg, "test"), true)
+}
+```
+
+有两点必须注意:
+
+- 必须给Swift API添加 "@objc" 标注。
+- 必须给第一个参数前添加下划线"_"来显式忽略参数名
 
 ## 命名空间
 
