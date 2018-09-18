@@ -10,6 +10,15 @@
 #import "JSBUtil.h"
 
 @implementation InternalApis
+
+- (NSArray *)ds_allMethodsForJS{
+    return @[@"hasNativeMethod:",
+             @"closePage:",
+             @"returnValue:",
+             @"dsinit:",
+             @"disableJavascriptDialogBlock:"];
+}
+
 - (id) hasNativeMethod:(id) args
 {
     return [self.webview onMessage:args type: DSB_API_HASNATIVEMETHOD];

@@ -16,6 +16,13 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 }
 
+@protocol JSBUtilDelegate <NSObject>
+/**
+ All methods for JS in a class.
+ */
+- (NSArray *)ds_allMethodsForJS;
+@end
+
 enum{
  DSB_API_HASNATIVEMETHOD,
  DSB_API_CLOSEPAGE,
