@@ -73,7 +73,7 @@ static NSMutableDictionary *_JSBUtilClassMethodsCache;
     array = methodSet.allObjects;
     
     // fetch from class, superclass...
-    if (!array) {
+    if (array.count == 0) {
         NSString *className = NSStringFromClass(class);
         NSMutableSet *methods = [NSMutableSet set];
         while (class) {
