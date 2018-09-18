@@ -44,6 +44,8 @@ pod "dsBridge"
 1. 新建一个类，实现API 
 
    ```objective-c
+   #import "dsbridge.h" 
+   ...
    @implementation JsApiTest
    //同步API 
    - (NSString *) testSyn:(NSString *) msg
@@ -51,7 +53,7 @@ pod "dsBridge"
        return [msg stringByAppendingString:@"[ syn call]"];
    }
    //异步API
-   - (void) testAsyn:(NSString *) msg :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
    {
        completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
    }
@@ -73,9 +75,9 @@ pod "dsBridge"
 
      ```javascript
      //cdn方式引入初始化代码(中国地区慢，建议下载到本地工程)
-     //<script src="https://unpkg.com/dsbridge@3.1.1/dist/dsbridge.js"> </script>
+     //<script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.js"> //</script>
      //npm方式安装初始化代码
-     //npm install dsbridge@3.1.1
+     //npm install dsbridge@3.1.4
      var dsBridge=require("dsbridge")
      ```
 
@@ -120,6 +122,12 @@ pod "dsBridge"
 
    **` (void) handler:(id)arg :(void (^)( id result,BOOL complete))completionHandler）`**
 
+   `JSCallback` 是一个block类型:
+
+   ```objective-c
+   typedef void (^JSCallback)(NSString * _Nullable result,BOOL complete); 
+   ```
+
 > 注意：API名字**不能**以"init"开始，因为oc的类中是被预留的, 如果以"init"开始，执行结果将无法预期(很多时候会crash)。
 >
 
@@ -145,6 +153,8 @@ pod "dsBridge"
 - 必须给Swift API添加 "@objc" 标注。
 - 必须给第一个参数前添加下划线"_"来显式忽略参数名
 
+完整的示例在 [这里](https://github.com/wendux/DSBridge-IOS/blob/master/dsbridgedemo/JsApiTestSwift.swift) .
+
 ## 命名空间
 
 命名空间可以帮助你更好的管理API，这在API数量多的时候非常实用，比如在混合应用中。DSBridge (>= v3.0.0) 支持你通过命名空间将API分类管理，并且命名空间支持多级的，不同级之间只需用'.' 分隔即可。
@@ -169,7 +179,7 @@ pod "dsBridge"
 In Object-c
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
+- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
 {
     value=10;
     hanlder=completionHandler;
@@ -237,7 +247,7 @@ DSBridge已经实现了 Javascript的弹出框函数(alert/confirm/prompt)，这
 {
     return arg;
 }
-- (void) asyn: (id) arg :(void (^)( id _Nullable result,BOOL complete))completionHandler
+- (void) asyn: (id) arg :(JSCallback)completionHandler
 {
     completionHandler(arg,YES);
 }

@@ -8,6 +8,8 @@
 
 #import <WebKit/WebKit.h>
 
+typedef void (^JSCallback)(NSString * _Nullable result,BOOL complete);
+
 @interface DWKWebView : WKWebView <WKUIDelegate>
 
 @property (nullable, nonatomic, weak) id <WKUIDelegate> DSUIDelegate;

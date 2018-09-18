@@ -7,6 +7,7 @@
 //
 
 #import "JsEchoApi.h"
+#import "dsbridge.h"
 
 @implementation JsEchoApi
 
@@ -15,7 +16,7 @@
     return arg;
 }
 
-- (void) asyn: (id) arg :(void (^)( id _Nullable result,BOOL complete))completionHandler
+- (void) asyn: (id) arg :(JSCallback)completionHandler
 {
     completionHandler(arg,YES);
 }

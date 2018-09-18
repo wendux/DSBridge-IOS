@@ -7,6 +7,7 @@
 //
 
 import Foundation
+typealias JSCallback = (String, Bool)->Void
 
 class JsApiTestSwift: NSObject {
     
@@ -15,7 +16,7 @@ class JsApiTestSwift: NSObject {
         return String(format:"%@[Swift sync call:%@]", arg, "test")
     }
     
-    @objc func testAsyn( _ arg:String, handler: (String, Bool)->Void) {
+    @objc func testAsyn( _ arg:String, handler: JSCallback) {
         handler(String(format:"%@[Swift async call:%@]", arg, "test"), true)
     }
     

@@ -21,7 +21,7 @@
     return [msg stringByAppendingString:@"[ syn call]"];
 }
 
-- (void) testAsyn:(NSString *) msg :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+- (void) testAsyn:(NSString *) msg :(JSCallback) completionHandler
 {
     completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
 }
@@ -31,12 +31,12 @@
     return  @"testNoArgSyn called [ syn call]";
 }
 
-- ( void )testNoArgAsyn:(NSDictionary *) args :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+- ( void )testNoArgAsyn:(NSDictionary *) args :(JSCallback)completionHandler
 {
     completionHandler(@"testNoArgAsyn called [ asyn call]",YES);
 }
 
-- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
+- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
 {
     value=10;
     hanlder=completionHandler;
@@ -62,7 +62,7 @@
  * redirect requests to native, more about Fly see  https://github.com/wendux/fly
  * @param requestInfo passed by fly.js, more detail reference https://wendux.github.io/dist/#/doc/flyio-en/native
  */
--(void)onAjaxRequest:(NSDictionary *) requestInfo  :(void (^)(NSString * _Nullable result,BOOL complete))completionHandle{
+-(void)onAjaxRequest:(NSDictionary *) requestInfo  :(JSCallback)completionHandler{
    
 }
 
