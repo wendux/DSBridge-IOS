@@ -62,13 +62,11 @@ static NSMutableDictionary *_JSBUtilClassMethodsCache;
     NSArray *array;
     NSMutableSet *methodSet = [NSMutableSet set];
     Class cls = [class class];
-    id obj = [cls new];
-    while ([obj respondsToSelector:@selector(ds_allMethodsForJS)]) {
-        NSArray *array = [obj performSelector:@selector(ds_allMethodsForJS)];
+    while ([cls respondsToSelector:@selector(ds_allMethodsForJS)]) {
+        NSArray *array = [(id<JSBUtilDelegate>)cls ds_allMethodsForJS];
         [methodSet addObjectsFromArray:array];
         
         cls = class_getSuperclass(cls);
-        obj = [cls new];
     }
     array = methodSet.allObjects;
     

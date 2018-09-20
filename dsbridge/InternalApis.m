@@ -11,7 +11,7 @@
 
 @implementation InternalApis
 
-- (NSArray *)ds_allMethodsForJS{
++ (NSArray *)ds_allMethodsForJS{
     return @[@"hasNativeMethod:",
              @"closePage:",
              @"returnValue:",

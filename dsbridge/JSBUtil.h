@@ -20,7 +20,7 @@ _Pragma("clang diagnostic pop") \
 /**
  All methods for JS in a class.
  */
-- (NSArray *)ds_allMethodsForJS;
++ (NSArray *)ds_allMethodsForJS;
 @end
 
 enum{
