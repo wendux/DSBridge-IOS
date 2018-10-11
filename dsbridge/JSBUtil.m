@@ -15,7 +15,6 @@
     NSString *jsonString = nil;
     NSError *error;
     
-    // judgement ---HaoCold 2018-08-23 09:42:09
     if (![NSJSONSerialization isValidJSONObject:dict]) {
         return @"{}";
     }

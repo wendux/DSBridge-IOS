@@ -108,15 +108,16 @@ pod "dsBridge"
     ```
 
 
-## Object-C API signature
+## Object-C API 签名
 
-为了兼容Android，我们约定 OC API 签名如下:
+ OC API 必须符合如下签名:
 
 1. 同步API.
 
    **`(id) handler:(id) msg`**
 
-   参数可以是任何类型, 但是返回值类型不能为 **void。** **如果不需要参数，也必须声明**，声明后不适用就行。
+   参数可以是任何类型, 但是返回值类型不能为 **void。** **如果不需要参数，也必须声明**，声明后不使用就行。
+   > 如果同步API返回值类型为void，调用时则会导致Crash，请务必遵守签名规范。
 
 2. 异步 API.
 

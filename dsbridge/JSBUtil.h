@@ -1,20 +1,4 @@
-//
-//  Util.h
-//  dspider
-//
-//  Created by 杜文 on 16/12/27.
-//  Copyright © 2016年 杜文. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-
-#define SuppressPerformSelectorLeakWarning(Stuff) \
-{ \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
-Stuff; \
-_Pragma("clang diagnostic pop") \
-}
 
 enum{
  DSB_API_HASNATIVEMETHOD,

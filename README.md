@@ -1,3 +1,4 @@
+English| [中文简体](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)   
 # DSBridge  for  IOS
 
 ![dsBridge](https://github.com/wendux/DSBridge-IOS/raw/master/img/dsbridge.png)
@@ -8,9 +9,7 @@
 
 > Modern cross-platform JavaScript bridge, through which you can invoke each other's functions synchronously or asynchronously between JavaScript and native applications.
 
-
-
-Chinese documentation [中文文档](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)       
+   
 DSBridge-Android：https://github.com/wendux/DSBridge-Android 
 
 
