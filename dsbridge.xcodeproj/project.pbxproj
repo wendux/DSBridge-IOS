@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		812F1D3B216F1F9D00B5BD0C /* publish.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = publish.sh; sourceTree = "<group>"; };
 		8142EA1C214212E600BEE5C0 /* dsbridgedemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dsbridgedemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8142EA1D214212E700BEE5C0 /* JsApiTestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsApiTestSwift.swift; sourceTree = "<group>"; };
 		815612E92020304600C4F5CD /* InternalApis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternalApis.h; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		818F0B851E18C08100679925 = {
 			isa = PBXGroup;
 			children = (
+				812F1D3B216F1F9D00B5BD0C /* publish.sh */,
 				81CFC867202C42AA00CF9D83 /* img */,
 				81CFC861202953CB00CF9D83 /* .travis.yml */,
 				81CFC85F2029456C00CF9D83 /* readme-chs.md */,

@@ -267,6 +267,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
         do{
             if(args && (cb= args[@"_dscbstub"])){
                 if([JavascriptInterfaceObject respondsToSelector:selasyn]){
+                    __weak typeof(self) weakSelf = self;
                     void (^completionHandler)(id,BOOL) = ^(id value,BOOL complete){
                         NSString *del=@"";
                         result[@"code"]=@0;
@@ -280,18 +281,18 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
                             del=[@"delete window." stringByAppendingString:cb];
                         }
                         NSString*js=[NSString stringWithFormat:@"try {%@(JSON.parse(decodeURIComponent(\"%@\")).data);%@; } catch(e){};",cb,(value == nil) ? @"" : value,del];
-                        
+                        __strong typeof(self) strongSelf = weakSelf;
                         @synchronized(self)
                         {
                             UInt64  t=[[NSDate date] timeIntervalSince1970]*1000;
                             jsCache=[jsCache stringByAppendingString:js];
                             if(t-lastCallTime<50){
                                 if(!isPending){
-                                    [self evalJavascript:50];
+                                    [strongSelf evalJavascript:50];
                                     isPending=true;
                                 }
                             }else{
-                                [self evalJavascript:0];
+                                [strongSelf evalJavascript:0];
                             }
                         }
                         
