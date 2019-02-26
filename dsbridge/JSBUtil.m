@@ -15,17 +15,32 @@
     NSString *jsonString = nil;
     NSError *error;
     
-    if (![NSJSONSerialization isValidJSONObject:dict]) {
+    id json = [self modelToJSONObject:dict];
+    
+    if (![NSJSONSerialization isValidJSONObject:json]) {
         return @"{}";
     }
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    if (! jsonData) {
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+    if (!jsonData) {
         return @"{}";
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
     return jsonString;
+}
+
+//call YYModel methods
++ (id)modelToJSONObject:(id _Nonnull)model
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    if ([model respondsToSelector:@selector(yy_modelToJSONObject)]) {
+        return [model performSelector:@selector(yy_modelToJSONObject)];
+#pragma clang diagnostic pop
+    } else {
+        return model;
+    }
 }
 
 //get this class all method
