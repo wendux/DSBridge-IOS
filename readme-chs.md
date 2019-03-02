@@ -377,13 +377,13 @@ custom the  label text of  javascript dialog that includes alert/confirm/prompt,
 
 ##### `dsBridge.call(method,[arg,callback])`
 
-同步或异步的调用Java API。
+同步或异步的调用iOS端 API。
 
-`method`: Java API 名称， 可以包含命名空间。
+`method`: iOS端 API 名称， 可以包含命名空间，不需要包含 Objective-C 中的 `:` 符号。
 
-`arg`:传递给Java API 的参数。只能传一个，如果需要多个参数时，可以合并成一个json对象参数。
+`arg`:传递给iOS端 API 的参数。 **只能传一个**，如果需要多个参数时，可以合并成一个json对象参数。
 
-`callback(String returnValue)`: 处理Java API的返回结果. 可选参数，**只有异步调用时才需要提供**.
+`callback(String returnValue)`: 处理iOS API的返回结果. 可选参数，**只有异步调用时才需要提供**.
 
 
 
