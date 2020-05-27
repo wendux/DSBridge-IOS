@@ -24,9 +24,26 @@
     bool isDebug;
 }
 
+-(instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
 {
+    self = [super initWithFrame:frame configuration: configuration];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+-(void)commonInit{
+    super.UIDelegate=self;
     txtName=nil;
     dialogType=0;
     callId=0;
@@ -46,16 +63,12 @@
     WKUserScript *script = [[WKUserScript alloc] initWithSource:@"window._dswk=true;"
                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
                                                forMainFrameOnly:YES];
-    [configuration.userContentController addUserScript:script];
-    self = [super initWithFrame:frame configuration: configuration];
-    if (self) {
-        super.UIDelegate=self;
-    }
+    [self.configuration.userContentController addUserScript:script];
+    
     // add internal Javascript Object
     InternalApis *  interalApis= [[InternalApis alloc] init];
     interalApis.webview=self;
     [self addJavascriptObject:interalApis namespace:@"_dsb"];
-    return self;
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt
