@@ -45,7 +45,7 @@
     
     WKUserScript *script = [[WKUserScript alloc] initWithSource:@"window._dswk=true;"
                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
-                                               forMainFrameOnly:YES];
+                                               forMainFrameOnly:NO];
     [configuration.userContentController addUserScript:script];
     self = [super initWithFrame:frame configuration: configuration];
     if (self) {
