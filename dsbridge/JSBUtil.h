@@ -1,5 +1,12 @@
 #import <Foundation/Foundation.h>
 
+@protocol JSBUtilDelegate <NSObject>
+/**
+ All methods for JS in a class.
+ */
++ (NSArray *)ds_allMethodsForJS;
+@end
+
 enum{
  DSB_API_HASNATIVEMETHOD,
  DSB_API_CLOSEPAGE,
