@@ -44,6 +44,8 @@ pod "dsBridge"
 1. 新建一个类，实现API 
 
    ```objective-c
+   #import "dsbridge.h" 
+   ...
    @implementation JsApiTest
    //同步API 
    - (NSString *) testSyn:(NSString *) msg
@@ -51,7 +53,7 @@ pod "dsBridge"
        return [msg stringByAppendingString:@"[ syn call]"];
    }
    //异步API
-   - (void) testAsyn:(NSString *) msg :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
    {
        completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
    }
@@ -73,9 +75,9 @@ pod "dsBridge"
 
      ```javascript
      //cdn方式引入初始化代码(中国地区慢，建议下载到本地工程)
-     //<script src="https://unpkg.com/dsbridge@3.1.1/dist/dsbridge.js"> </script>
+     //<script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.js"> //</script>
      //npm方式安装初始化代码
-     //npm install dsbridge@3.1.1
+     //npm install dsbridge@3.1.4
      var dsBridge=require("dsbridge")
      ```
 
@@ -106,24 +108,53 @@ pod "dsBridge"
     ```
 
 
-## Object-C API signature
+## Object-C API 签名
 
-为了兼容Android，我们约定 OC API 签名如下:
+ OC API 必须符合如下签名:
 
 1. 同步API.
 
    **`(id) handler:(id) msg`**
 
-   参数可以是任何类型, 但是返回值类型不能为 **void**.
+   参数可以是任何类型, 但是返回值类型不能为 **void。** **如果不需要参数，也必须声明**，声明后不使用就行。
+   > 如果同步API返回值类型为void，调用时则会导致Crash，请务必遵守签名规范。
 
 2. 异步 API.
 
    **` (void) handler:(id)arg :(void (^)( id result,BOOL complete))completionHandler）`**
 
+   `JSCallback` 是一个block类型:
+
+   ```objective-c
+   typedef void (^JSCallback)(NSString * _Nullable result,BOOL complete); 
+   ```
+
 > 注意：API名字**不能**以"init"开始，因为oc的类中是被预留的, 如果以"init"开始，执行结果将无法预期(很多时候会crash)。
 >
 
    
+
+## 在Swift中使用
+
+在 Swift中，你应该按照如下方式声明APIs:
+
+```swift
+//必须给第一个参数前添加下划线"_"来显式忽略参数名。
+@objc func testSyn( _ arg:String) -> String {
+	return String(format:"%@[Swift sync call:%@]", arg, "test")
+}
+
+@objc func testAsyn( _ arg:String, handler: (String, Bool)->Void) {
+	handler(String(format:"%@[Swift async call:%@]", arg, "test"), true)
+}
+```
+
+有两点必须注意:
+
+- 必须给Swift API添加 "@objc" 标注。
+- 必须给第一个参数前添加下划线"_"来显式忽略参数名
+
+完整的示例在 [这里](https://github.com/wendux/DSBridge-IOS/blob/master/dsbridgedemo/JsApiTestSwift.swift) .
 
 ## 命名空间
 
@@ -149,7 +180,7 @@ pod "dsBridge"
 In Object-c
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
+- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
 {
     value=10;
     hanlder=completionHandler;
@@ -217,7 +248,7 @@ DSBridge已经实现了 Javascript的弹出框函数(alert/confirm/prompt)，这
 {
     return arg;
 }
-- (void) asyn: (id) arg :(void (^)( id _Nullable result,BOOL complete))completionHandler
+- (void) asyn: (id) arg :(JSCallback)completionHandler
 {
     completionHandler(arg,YES);
 }

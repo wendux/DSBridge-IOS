@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=no"/>
     <!--require dsbridge init js-->
-    <script src="https://unpkg.com/dsbridge/dist/dsbridge.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/dsbridge/dist/dsbridge.js"> </script>
 </head>
 <style>
     .btn {
@@ -32,6 +32,8 @@
 <body>
 <div class="btn" onclick="callSyn()">Synchronous call</div>
 <div class="btn" onclick="callAsyn()">Asynchronous call</div>
+<div class="btn" onclick="callSynSwift()">Syn call (swift)</div>
+<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>
 <div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>
 <div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>
 <div class="btn" onclick="echoSyn()">echo.syn</div>
@@ -46,17 +48,26 @@
 <div class="btn" onclick="hasNativeMethod('testSyn')">hasNativeMethod("testSyn")</div>
 
 <script>
-    
 
     function callSyn() {
-      alert(dsBridge.call("testSyn", "testSyn--"))
+      alert(dsBridge.call("testSyn", "Hello"))
     }
 
     function callAsyn() {
-        dsBridge.call("testAsyn","testAsyn--", function (v) {
+        dsBridge.call("testAsyn","hello", function (v) {
             alert(v)
         })
     }
+
+function callSynSwift() {
+    alert(dsBridge.call("swift.testSyn", "hello"))
+}
+
+function callAsynSwift() {
+    dsBridge.call("swift.testAsyn","hello", function (v) {
+                  alert(v)
+                  })
+}
 
     function callAsyn_() {
         for (var i = 0; i < 2000; i++) {

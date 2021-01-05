@@ -1,21 +1,15 @@
-//
-//  DSWKwebview.m
-//
-//  Created by wendu on 16/12/28.
-//  Copyright © 2016 wendu. All rights reserved.
-//
-
 #import "DWKWebView.h"
 #import "JSBUtil.h"
 #import "DSCallInfo.h"
 #import "InternalApis.h"
+#import <objc/message.h>
 
 @implementation DWKWebView
 {
     void (^alertHandler)(void);
     void (^confirmHandler)(BOOL);
     void (^promptHandler)(NSString *);
-     void(^javascriptCloseWindowListener)(void);
+    void(^javascriptCloseWindowListener)(void);
     int dialogType;
     int callId;
     bool jsDialogBlock;
@@ -48,12 +42,12 @@
     isPending=false;
     isDebug=false;
     dialogTextDic=@{};
-
+    
     WKUserScript *script = [[WKUserScript alloc] initWithSource:@"window._dswk=true;"
                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
                                                forMainFrameOnly:YES];
     [configuration.userContentController addUserScript:script];
-    self = [super initWithFrame:frame configuration: configuration]; 
+    self = [super initWithFrame:frame configuration: configuration];
     if (self) {
         super.UIDelegate=self;
     }
@@ -83,7 +77,7 @@ completionHandler:(void (^)(NSString * _Nullable result))completionHandler
             }
         }
         completionHandler(result);
-     
+        
     }else {
         if(!jsDialogBlock){
             completionHandler(nil);
@@ -102,11 +96,12 @@ completionHandler:(void (^)(NSString * _Nullable result))completionHandler
             if(jsDialogBlock){
                 promptHandler=completionHandler;
             }
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:prompt
-                                                            message:@""
-                                                           delegate:self
-                                                  cancelButtonTitle:dialogTextDic[@"promptCancelBtn"]?dialogTextDic[@"promptCancelBtn"]:@"取消"
-                                                  otherButtonTitles:dialogTextDic[@"promptOkBtn"]?dialogTextDic[@"promptOkBtn"]:@"确定",
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:prompt
+                                  message:@""
+                                  delegate:self
+                                  cancelButtonTitle:dialogTextDic[@"promptCancelBtn"]?dialogTextDic[@"promptCancelBtn"]:@"取消"
+                                  otherButtonTitles:dialogTextDic[@"promptOkBtn"]?dialogTextDic[@"promptOkBtn"]:@"确定",
                                   nil];
             [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
             txtName = [alert textFieldAtIndex:0];
@@ -151,8 +146,8 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     if(!jsDialogBlock){
         completionHandler(YES);
     }
-    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
-                              @selector(webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:)])
+    if( self.DSUIDelegate&& [self.DSUIDelegate respondsToSelector:
+                            @selector(webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:)])
     {
         return[self.DSUIDelegate webView:webView runJavaScriptConfirmPanelWithMessage:message
                         initiatedByFrame:frame
@@ -188,25 +183,30 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 }
 
 - (BOOL)webView:(WKWebView *)webView shouldPreviewElement:(WKPreviewElementInfo *)elementInfo{
-    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
-                              @selector(webView:shouldPreviewElement:)]){
-        return [self.DSUIDelegate webView:webView shouldPreviewElement:elementInfo];
-    }
+    if( self.DSUIDelegate
+       && [self.DSUIDelegate respondsToSelector:
+           @selector(webView:shouldPreviewElement:)]){
+           return [self.DSUIDelegate webView:webView shouldPreviewElement:elementInfo];
+       }
     return NO;
 }
 
 - (UIViewController *)webView:(WKWebView *)webView previewingViewControllerForElement:(WKPreviewElementInfo *)elementInfo defaultActions:(NSArray<id<WKPreviewActionItem>> *)previewActions{
-    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
-                              @selector(webView:previewingViewControllerForElement:defaultActions:)]){
-        return [self.DSUIDelegate webView:webView previewingViewControllerForElement:elementInfo defaultActions:previewActions];
+    if( self.DSUIDelegate &&
+       [self.DSUIDelegate respondsToSelector:@selector(webView:previewingViewControllerForElement:defaultActions:)]){
+        return [self.DSUIDelegate
+                webView:webView
+                previewingViewControllerForElement:elementInfo
+                defaultActions:previewActions
+                ];
     }
     return  nil;
 }
 
 
 - (void)webView:(WKWebView *)webView commitPreviewingViewController:(UIViewController *)previewingViewController{
-    if( self.DSUIDelegate && [self.DSUIDelegate respondsToSelector:
-                              @selector(webView:commitPreviewingViewController:)]){
+    if( self.DSUIDelegate
+       && [self.DSUIDelegate respondsToSelector:@selector(webView:commitPreviewingViewController:)]){
         return [self.DSUIDelegate webView:webView commitPreviewingViewController:previewingViewController];
     }
 }
@@ -223,7 +223,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
         if(buttonIndex==1){
             promptHandler([txtName text]);
         }else{
-             promptHandler(@"");
+            promptHandler(@"");
         }
         promptHandler=nil;
         txtName=nil;
@@ -246,7 +246,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 -(NSString *)call:(NSString*) method :(NSString*) argStr
 {
     NSArray *nameStr=[JSBUtil parseNamespace:[method stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    //id JavascriptInterfaceObject= [javaScriptNamespaceInterfaces  objectForKey:nameStr[0]];
+
     id JavascriptInterfaceObject=javaScriptNamespaceInterfaces[nameStr[0]];
     NSString *error=[NSString stringWithFormat:@"Error! \n Method %@ is not invoked, since there is not a implementation for it",method];
     NSMutableDictionary*result =[NSMutableDictionary dictionaryWithDictionary:@{@"code":@-1,@"data":@""}];
@@ -259,11 +259,15 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
         SEL sel=NSSelectorFromString(methodOne);
         SEL selasyn=NSSelectorFromString(methodTwo);
         NSDictionary * args=[JSBUtil jsonStringToObject:argStr];
-        NSString *arg=args[@"data"];
+        id arg=args[@"data"];
+        if(arg==[NSNull null]){
+            arg=nil;
+        }
         NSString * cb;
         do{
             if(args && (cb= args[@"_dscbstub"])){
                 if([JavascriptInterfaceObject respondsToSelector:selasyn]){
+                    __weak typeof(self) weakSelf = self;
                     void (^completionHandler)(id,BOOL) = ^(id value,BOOL complete){
                         NSString *del=@"";
                         result[@"code"]=@0;
@@ -277,35 +281,31 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
                             del=[@"delete window." stringByAppendingString:cb];
                         }
                         NSString*js=[NSString stringWithFormat:@"try {%@(JSON.parse(decodeURIComponent(\"%@\")).data);%@; } catch(e){};",cb,(value == nil) ? @"" : value,del];
-                        
+                        __strong typeof(self) strongSelf = weakSelf;
                         @synchronized(self)
                         {
                             UInt64  t=[[NSDate date] timeIntervalSince1970]*1000;
                             jsCache=[jsCache stringByAppendingString:js];
                             if(t-lastCallTime<50){
                                 if(!isPending){
-                                    [self evalJavascript:50];
+                                    [strongSelf evalJavascript:50];
                                     isPending=true;
                                 }
                             }else{
-                                [self evalJavascript:0];
+                                [strongSelf evalJavascript:0];
                             }
                         }
                         
                     };
-                    SuppressPerformSelectorLeakWarning(
-                                                       [JavascriptInterfaceObject performSelector:selasyn withObject:arg withObject:completionHandler];
-                                                       
-                                                       );
                     
+                    void(*action)(id,SEL,id,id) = (void(*)(id,SEL,id,id))objc_msgSend;
+                    action(JavascriptInterfaceObject,selasyn,arg,completionHandler);
                     break;
                 }
             }else if([JavascriptInterfaceObject respondsToSelector:sel]){
                 id ret;
-                SuppressPerformSelectorLeakWarning(
-                                                   ret=[JavascriptInterfaceObject performSelector:sel withObject:arg];
-                                                   );
-                
+                id(*action)(id,SEL,id) = (id(*)(id,SEL,id))objc_msgSend;
+                ret=action(JavascriptInterfaceObject,sel,arg);
                 [result setValue:@0 forKey:@"code"];
                 if(ret!=nil){
                     [result setValue:ret forKey:@"data"];
@@ -380,7 +380,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 
 - (void) addJavascriptObject:(id)object namespace:(NSString *)namespace{
     if(namespace==nil){
-      namespace=@"";
+        namespace=@"";
     }
     if(object!=NULL){
         [javaScriptNamespaceInterfaces setObject:object forKey:namespace];
@@ -404,22 +404,22 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
     id ret=nil;
     switch (type) {
         case DSB_API_HASNATIVEMETHOD:
-        ret= [self hasNativeMethod:msg]?@1:@0;
-        break;
+            ret= [self hasNativeMethod:msg]?@1:@0;
+            break;
         case DSB_API_CLOSEPAGE:
-        [self closePage:msg];
-        break;
+            [self closePage:msg];
+            break;
         case DSB_API_RETURNVALUE:
-        ret=[self returnValue:msg];
-        break;
+            ret=[self returnValue:msg];
+            break;
         case DSB_API_DSINIT:
-        ret=[self dsinit:msg];
-        break;
+            ret=[self dsinit:msg];
+            break;
         case DSB_API_DISABLESAFETYALERTBOX:
-        [self disableJavascriptDialogBlock:[msg[@"disable"] boolValue]];
-        break;
+            [self disableJavascriptDialogBlock:[msg[@"disable"] boolValue]];
+            break;
         default:
-        break;
+            break;
     }
     return ret;
 }
@@ -478,9 +478,9 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completi
 }
 
 - (void)hasJavascriptMethod:(NSString *)handlerName methodExistCallback:(void (^)(bool exist))callback{
-   [self callHandler:@"_hasJavascriptMethod" arguments:@[handlerName] completionHandler:^(NSNumber* _Nullable value) {
-       callback([value boolValue]);
-   }];
+    [self callHandler:@"_hasJavascriptMethod" arguments:@[handlerName] completionHandler:^(NSNumber* _Nullable value) {
+        callback([value boolValue]);
+    }];
 }
 
 @end

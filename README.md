@@ -1,3 +1,4 @@
+English| [中文简体](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)   
 # DSBridge  for  IOS
 
 ![dsBridge](https://github.com/wendux/DSBridge-IOS/raw/master/img/dsbridge.png)
@@ -8,9 +9,7 @@
 
 > Modern cross-platform JavaScript bridge, through which you can invoke each other's functions synchronously or asynchronously between JavaScript and native applications.
 
-
-
-Chinese documentation [中文文档](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)       
+   
 DSBridge-Android：https://github.com/wendux/DSBridge-Android 
 
 
@@ -67,6 +66,8 @@ To use a dsBridge in your own project:
 1. Implement APIs in a class 
 
    ```objective-c
+   #import "dsbridge.h" 
+   ...
    @implementation JsApiTest
    //for synchronous invocation  
    - (NSString *) testSyn:(NSString *) msg
@@ -74,7 +75,7 @@ To use a dsBridge in your own project:
        return [msg stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
-   - (void) testAsyn:(NSString *) msg :(void (^)(NSString * _Nullable result,BOOL complete))completionHandler
+   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
    {
        completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
    }
@@ -95,9 +96,9 @@ To use a dsBridge in your own project:
 
      ```javascript
      //cdn
-     //<script src="https://unpkg.com/dsbridge@3.1.1/dist/dsbridge.js"> </script>
+     //<script src="https://cdn.jsdelivr.net/npm/dsbridge@3.1.4/dist/dsbridge.js"> //</script>
      //npm
-     //npm install dsbridge@3.1.1
+     //npm install dsbridge@3.1.4
      var dsBridge=require("dsbridge")
      ```
 
@@ -142,10 +143,37 @@ In order to be compatible with IOS , we make the following convention  on Object
 
 2. For asynchronous API.
 
-**` (void) handler:(id) arg :(void (^)( id result,BOOL complete))completionHandler）`**
+     **` (void) handler:(id) arg :(JSCallback)completionHandler）`**
 
-> Attention: API name can't start with "init", because it is reserved in OC class.
->
+     `JSCallback` is a block type:
+
+     ```objective-c
+     typedef void (^JSCallback)(NSString * _Nullable result,BOOL complete); 
+     ```
+
+   > Attention: API name can't start with "init", because it is reserved in OC class.
+
+## Using in Swift
+
+In Swift, you should declare APIs as follows:
+
+```swift
+//MUST USE "_" to ignore the first argument name explicitly。
+@objc func testSyn( _ arg:String) -> String {
+	return String(format:"%@[Swift sync call:%@]", arg, "test")
+}
+
+@objc func testAsyn( _ arg:String, handler: (String, Bool)->Void) {
+	handler(String(format:"%@[Swift async call:%@]", arg, "test"), true)
+}
+```
+
+Two points you should keep in mind:
+
+- Must add "@objc" to Swift API.
+- Must  use "_"  to ignore the first argument name explicitly
+
+The complete example is [here](https://github.com/wendux/DSBridge-IOS/blob/master/dsbridgedemo/JsApiTestSwift.swift) .
 
 ## Namespace
 
@@ -169,7 +197,7 @@ Normally, when a API is called to end, it returns a result, which corresponds on
 In Object-c 
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(void (^)(NSNumber * _Nullable result,BOOL complete))completionHandler
+- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
 {
     value=10;
     hanlder=completionHandler;
@@ -237,7 +265,7 @@ Example:
 {
     return arg;
 }
-- (void) asyn: (id) arg :(void (^)( id _Nullable result,BOOL complete))completionHandler
+- (void) asyn: (id) arg :(JSCallback)completionHandler
 {
     completionHandler(arg,YES);
 }
