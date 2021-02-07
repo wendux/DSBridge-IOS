@@ -461,12 +461,13 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XTLLEQZMD7;
 				INFOPLIST_FILE = dsbridgedemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo.xx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dsbridgedemo/dsbridgedemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -479,11 +480,12 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = XTLLEQZMD7;
 				INFOPLIST_FILE = dsbridgedemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wendu.dsbridgedemo.xx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "dsbridgedemo/dsbridgedemo-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
