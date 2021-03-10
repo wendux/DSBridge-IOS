@@ -24,6 +24,18 @@
     bool isDebug;
 }
 
+-(void)dealloc {
+    if(dialogType==1 && alertHandler){
+        alertHandler();
+        alertHandler=nil;
+    }else if(dialogType==2 && confirmHandler){
+        confirmHandler(NO);
+        confirmHandler=nil;
+    }else if(dialogType==3 && promptHandler) {
+        promptHandler(@"");
+        promptHandler=nil;
+    }
+}
 
 -(instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
 {
