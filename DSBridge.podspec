@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "DSBridge"
-  s.version      = "3.0.9"
+  s.name         = "DSBridge-iOS"
+  s.version      = "3.1.0"
   s.summary      = "An ios bridge for calling functions synchronously and asynchronously between JavaScript and Object-C in WKWebView"
 
   # This description is used to generate tags and improve search results.
