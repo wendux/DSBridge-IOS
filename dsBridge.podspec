@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "dsBridge"
+  s.name         = "DSBridge"
   s.version      = "3.0.7"
-  s.summary      = "An ios bridge for calling functions synchronously and asynchronously between JavaScript and Object-C in WKWebView/UIWebView"
+  s.summary      = "An ios bridge for calling functions synchronously and asynchronously between JavaScript and Object-C in WKWebView"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -28,9 +28,7 @@ Pod::Spec.new do |s|
  An javascript bridge for calling functions synchronously and asynchronously
                    DESC
 
-  s.homepage     = "https://github.com/wendux/DSBridge-IOS.git"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
+  s.homepage     = "https://github.com/yingkong1987/DSBridge-IOS"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -53,10 +51,8 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "lazydu" => "824783146@qq.com" }
-  # Or just: s.author    = "lazydu"
-  # s.authors            = { "lazydu" => "824783146@qq.com" }
-  # s.social_media_url   = "http://twitter.com/wen.du"
+  s.author             = { "Geminiyao" => "24169433@qq.com" }
+
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -64,11 +60,11 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -80,7 +76,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/wendux/DSBridge-IOS.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/yingkong1987/DSBridge-IOS", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
