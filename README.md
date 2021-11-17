@@ -1,5 +1,5 @@
 English| [中文简体](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)   
-# DSBridge  for  IOS
+# DSBridge  for  iOS
 
 ![dsBridge](https://github.com/wendux/DSBridge-IOS/raw/master/img/dsbridge.png)
 
@@ -70,12 +70,12 @@ To use a dsBridge in your own project:
    ...
    @implementation JsApiTest
    //for synchronous invocation  
-   - (NSString *) testSyn:(NSString *) msg
+   - (NSString *)testSyn:(NSString *)msg
    {
        return [msg stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
-   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
+   - (void)testAsyn:(NSString *)msg callback:(JSCallback)completionHandler
    {
        completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
    }
@@ -85,7 +85,7 @@ To use a dsBridge in your own project:
 2. add API object to DWKWebView 
 
    ```objective-c
-   DWKWebView * dwebview=[[DWKWebView alloc] initWithFrame:bounds];
+   DWKWebView *dwebview = [[DWKWebView alloc] initWithFrame:bounds];
    // register api object without namespace
    [dwebview addJavascriptObject:[[JsApiTest alloc] init] namespace:nil];
    ```
@@ -197,21 +197,21 @@ Normally, when a API is called to end, it returns a result, which corresponds on
 In Object-c 
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
+- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler
 {
-    value=10;
-    hanlder=completionHandler;
-    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                              target:self
-                                            selector:@selector(onTimer:)
-                                            userInfo:nil
-                                             repeats:YES];
+    value = 10;
+    hanlder = completionHandler;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTimer:)
+                                           userInfo:nil
+                                            repeats:YES];
 }
--(void)onTimer:t{
-    if(value!=-1){
-        hanlder([NSNumber numberWithInt:value--],NO);
-    }else{
-        hanlder(@"",YES);
+- (void)onTimer:t {
+    if (value != -1) {
+        hanlder([NSNumber numberWithInt:value--], NO);
+    } else {
+        hanlder(@"", YES);
         [timer invalidate];
     }
 }
@@ -261,14 +261,14 @@ Example:
 
 ```objective-c
 @implementation JsEchoApi
-- (id) syn:(id) arg
-{
+- (id)syn:(id)arg {
     return arg;
 }
-- (void) asyn: (id) arg :(JSCallback)completionHandler
-{
-    completionHandler(arg,YES);
+
+- (void)asyn:(id)arg callback:(JSCallback)completionHandler {
+    completionHandler(arg, YES);
 }
+
 @end
 // register api object with namespace "echo"
 [dwebview addJavascriptObject:[[JsEchoApi alloc] init] namespace:@"echo"];
@@ -294,11 +294,11 @@ Remove the  Object-c API object with supplied namespace.
 
 
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args`
 
-##### `callHandler:(NSString *) methodName  completionHandler:(void (^)(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  completionHandler:(void (^)(id value))completionHandler`
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args completionHandler:(void (^ )(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args completionHandler:(void (^ )(id value))completionHandler`
 
 Call the javascript API. If a `completionHandler` is given, the javascript handler can respond. the `methodName` can contain the namespace.  **The completionHandler will be called in main thread**.
 
@@ -324,7 +324,7 @@ BE CAREFUL to use. if you call any of the javascript popup box functions (`alert
 Example:
 
 ```objective-c
-[dwebview disableJavascriptDialogBlock: true]
+[dwebview disableJavascriptDialogBlock:true]
 ```
 
 if you want to  enable the block,  just calling this method with the argument value `false` .

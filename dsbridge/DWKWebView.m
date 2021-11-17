@@ -242,8 +242,8 @@
         NSLog(@"Js bridge  called, but can't find a corresponded JavascriptObject , please check your code!");
     } else {
         method = nameStr[1];
-        NSString *methodOne = [JSBUtil methodByNameArg:1 selName:method class:[JavascriptInterfaceObject class]];
-        NSString *methodTwo = [JSBUtil methodByNameArg:2 selName:method class:[JavascriptInterfaceObject class]];
+        NSString *methodOne = [JSBUtil methodByNameArg:1 selName:method objClass:[JavascriptInterfaceObject class]];
+        NSString *methodTwo = [JSBUtil methodByNameArg:2 selName:method objClass:[JavascriptInterfaceObject class]];
         SEL sel = NSSelectorFromString(methodOne);
         SEL selasyn = NSSelectorFromString(methodTwo);
         NSDictionary *args = [JSBUtil jsonStringToObject:argStr];
@@ -411,8 +411,8 @@
     NSString *type = [args[@"type"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     id JavascriptInterfaceObject = [javaScriptNamespaceInterfaces objectForKey:nameStr[0]];
     if (JavascriptInterfaceObject) {
-        bool syn = [JSBUtil methodByNameArg:1 selName:nameStr[1] class:[JavascriptInterfaceObject class]] != nil;
-        bool asyn = [JSBUtil methodByNameArg:2 selName:nameStr[1] class:[JavascriptInterfaceObject class]] != nil;
+        bool syn = [JSBUtil methodByNameArg:1 selName:nameStr[1] objClass:[JavascriptInterfaceObject class]] != nil;
+        bool asyn = [JSBUtil methodByNameArg:2 selName:nameStr[1] objClass:[JavascriptInterfaceObject class]] != nil;
         if (([@"all" isEqualToString:type] && (syn || asyn)) || ([@"asyn" isEqualToString:type] && asyn) || ([@"syn" isEqualToString:type] && syn)) {
             return true;
         }

@@ -48,15 +48,15 @@ pod "dsBridge"
    ...
    @implementation JsApiTest
    //同步API 
-   - (NSString *) testSyn:(NSString *) msg
-   {
-       return [msg stringByAppendingString:@"[ syn call]"];
+   - (NSString *)testSyn:(NSString *)msg {
+    return [msg stringByAppendingString:@"[ syn call]"];
    }
+   
    //异步API
-   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
-   {
-       completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
+   - (void)testAsyn:(NSString *)msg callback:(JSCallback)completionHandler {
+        completionHandler([msg stringByAppendingString:@" [ asyn call]"], YES);
    }
+   
    @end 
    ```
    可以看到，DSBridge正式通过API类的方式集中、统一地管理API。
@@ -114,14 +114,14 @@ pod "dsBridge"
 
 1. 同步API.
 
-   **`(id) handler:(id) msg`**
+   **`(id)handler:(id)msg`**
 
    参数可以是任何类型, 但是返回值类型不能为 **void。** **如果不需要参数，也必须声明**，声明后不使用就行。
    > 如果同步API返回值类型为void，调用时则会导致Crash，请务必遵守签名规范。
 
 2. 异步 API.
 
-   **` (void) handler:(id)arg :(void (^)( id result,BOOL complete))completionHandler）`**
+   **` (void)handler:(id)arg handler:(void (^)( id result,BOOL complete))completionHandler）`**
 
    `JSCallback` 是一个block类型:
 
@@ -180,21 +180,21 @@ pod "dsBridge"
 In Object-c
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
-{
-    value=10;
-    hanlder=completionHandler;
-    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                              target:self
-                                            selector:@selector(onTimer:)
-                                            userInfo:nil
-                                             repeats:YES];
+- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler {
+    value = 10;
+    hanlder = completionHandler;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTimer:)
+                                           userInfo:nil
+                                            repeats:YES];
 }
--(void)onTimer:t{
-    if(value!=-1){
-        hanlder([NSNumber numberWithInt:value--],NO);
-    }else{
-        hanlder(@"",YES);
+
+- (void)onTimer:t {
+    if (value != -1) {
+        hanlder([NSNumber numberWithInt:value--], NO);
+    } else {
+        hanlder(0, YES);
         [timer invalidate];
     }
 }
@@ -244,15 +244,15 @@ DSBridge已经实现了 Javascript的弹出框函数(alert/confirm/prompt)，这
 
 ```objective-c
 @implementation JsEchoApi
-- (id) syn:(id) arg
-{
+- (id)syn:(id)arg {
     return arg;
 }
-- (void) asyn: (id) arg :(JSCallback)completionHandler
-{
-    completionHandler(arg,YES);
+
+- (void)asyn:(id)arg callback:(JSCallback)completionHandler {
+    completionHandler(arg, YES);
 }
 @end
+
 // register api object with namespace "echo"
 [dwebview addJavascriptObject:[[JsEchoApi alloc] init] namespace:@"echo"];
 ```
@@ -277,11 +277,11 @@ dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
 
 
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args`
 
-##### `callHandler:(NSString *) methodName  completionHandler:(void (^)(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  completionHandler:(void (^)(id value))completionHandler`
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args completionHandler:(void (^ )(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args completionHandler:(void (^ )(id value))completionHandler`
 
 调用 javascript API.`methodName`  为javascript API 的名称，可以包含命名空间；参数以数组传递，`argumentss`数组中的元素依次对应javascript API的形参；  `completionHandler` 用于接收javascript API的返回值，**注意： `completionHandler`将在主线程中被执行**。
 

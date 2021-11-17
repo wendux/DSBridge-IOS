@@ -12,15 +12,28 @@ typedef void (^JSCallback)(NSString *_Nullable result, BOOL complete);
 
 @interface DWKWebView : WKWebView <WKUIDelegate>
 
+/// Delegate
 @property (nullable, nonatomic, weak) id<WKUIDelegate> DSUIDelegate;
 
+/// Load web  use the url.
+/// @param url the url of the web page.
 - (void)loadUrl:(NSString *_Nonnull)url;
 
-// Call javascript handler
+/// Call javascript method
+/// @param methodName js called method name.
+/// @param args the method's args.
 - (void)callHandler:(NSString *_Nonnull)methodName arguments:(NSArray *_Nullable)args;
 
+/// Call javascript method
+/// @param methodName  js called method name.
+/// @param completionHandler completion handler block.
 - (void)callHandler:(NSString *_Nonnull)methodName completionHandler:(void (^_Nullable)(id _Nullable value))completionHandler;
 
+
+/// Call javascript method
+/// @param methodName  js called method name.
+/// @param args the method's args.
+/// @param completionHandler completion handler block.
 - (void)callHandler:(NSString *_Nonnull)methodName
           arguments:(NSArray *_Nullable)args
   completionHandler:(void (^_Nullable)(id _Nullable value))completionHandler;

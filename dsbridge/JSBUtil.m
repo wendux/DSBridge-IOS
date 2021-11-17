@@ -27,11 +27,11 @@
 }
 
 //get this class all method
-+ (NSArray *)allMethodFromClass:(Class)class {
++ (NSArray *)allMethodFromClass:(Class)objClass {
     NSMutableArray *methods = [NSMutableArray array];
-    while (class) {
+    while (objClass) {
         unsigned int count = 0;
-        Method *method = class_copyMethodList(class, &count);
+        Method *method = class_copyMethodList(objClass, &count);
         for (unsigned int i = 0; i < count; i++) {
             SEL name1 = method_getName(method[i]);
             const char *selName = sel_getName(name1);
@@ -40,18 +40,18 @@
         }
         free(method);
 
-        Class cls = class_getSuperclass(class);
-        class = [NSStringFromClass(cls) isEqualToString:NSStringFromClass([NSObject class])] ? nil : cls;
+        Class cls = class_getSuperclass(objClass);
+        objClass = [NSStringFromClass(cls) isEqualToString:NSStringFromClass([NSObject class])] ? nil : cls;
     }
 
     return [NSArray arrayWithArray:methods];
 }
 
 //return method name for xxx: or xxx:handle:
-+ (NSString *)methodByNameArg:(NSInteger)argNum selName:(NSString *)selName class:(Class)class {
++ (NSString *)methodByNameArg:(NSInteger)argNum selName:(NSString *)selName objClass:(Class)objClass {
     NSString *result = nil;
-    if (class) {
-        NSArray *arr = [JSBUtil allMethodFromClass:class];
+    if (objClass) {
+        NSArray *arr = [JSBUtil allMethodFromClass:objClass];
         for (int i = 0; i < arr.count; i++) {
             NSString *method = arr[i];
             NSArray *tmpArr = [method componentsSeparatedByString:@":"];
