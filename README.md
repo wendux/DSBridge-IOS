@@ -197,8 +197,7 @@ Normally, when a API is called to end, it returns a result, which corresponds on
 In Object-c 
 
 ```objective-c
-- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler
-{
+- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler {
     value = 10;
     hanlder = completionHandler;
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0
@@ -207,6 +206,7 @@ In Object-c
                                            userInfo:nil
                                             repeats:YES];
 }
+
 - (void)onTimer:t {
     if (value != -1) {
         hanlder([NSNumber numberWithInt:value--], NO);
@@ -282,7 +282,7 @@ var ret=dsBridge.call("echo.syn",{msg:" I am echoSyn call", tag:1})
 alert(JSON.stringify(ret))  
 // call echo.asyn
 dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
-      alert(JSON.stringify(ret));
+    alert(JSON.stringify(ret));
 })
 ```
 
@@ -307,11 +307,11 @@ Example:
 ```objective-c
 [dwebview callHandler:@"append" arguments:@[@"I",@"love",@"you"]
   completionHandler:^(NSString * _Nullable value) {
-       NSLog(@"call succeed, append string is: %@",value);
+    NSLog(@"call succeed, append string is: %@",value);
 }];
 // call with namespace 'syn', More details to see the Demo project                    
 [dwebview callHandler:@"syn.getInfo" completionHandler:^(NSDictionary * _Nullable value) {
-        NSLog(@"Namespace syn.getInfo: %@",value);
+    NSLog(@"Namespace syn.getInfo: %@",value);
 }];
 ```
 
@@ -339,7 +339,7 @@ Example:
 
 ```objective-c
 [dwebview setJavascriptCloseWindowListener:^{
-        NSLog(@"window.close called");
+    NSLog(@"window.close called");
 }];
 ```
 
@@ -354,7 +354,7 @@ Example:
 ```objective-c
 // test if javascript method exists.
 [dwebview hasJavascriptMethod:@"addValue" methodExistCallback:^(bool exist) {
-      NSLog(@"method 'addValue' exist : %d",exist);
+    NSLog(@"method 'addValue' exist : %d",exist);
 }];
 ```
 
@@ -430,7 +430,7 @@ Register javascript synchronous and asynchronous  API for Native invocation. The
    ```objective-c
    // call javascript method
    [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber * value){
-         NSLog(@"%@",value);
+        NSLog(@"%@",value);
    }];
 
    [dwebview callHandler:@"append" arguments:@[@"I",@"love",@"you"] completionHandler:^(NSString * _Nullable value) {

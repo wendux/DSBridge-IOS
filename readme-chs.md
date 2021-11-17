@@ -103,7 +103,7 @@ pod "dsBridge"
 
     ```objective-c
        [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
-              NSLog(@"%@",value);
+            NSLog(@"%@",value);
        }];
     ```
 
@@ -265,7 +265,7 @@ var ret=dsBridge.call("echo.syn",{msg:" I am echoSyn call", tag:1})
 alert(JSON.stringify(ret))  
 // call echo.asyn
 dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
-      alert(JSON.stringify(ret));
+    alert(JSON.stringify(ret));
 })
 ```
 
@@ -294,7 +294,7 @@ dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
 }];
 // call with namespace 'syn', More details to see the Demo project                    
 [dwebview callHandler:@"syn.getInfo" completionHandler:^(NSDictionary * _Nullable value) {
-        NSLog(@"Namespace syn.getInfo: %@",value);
+    NSLog(@"Namespace syn.getInfo: %@",value);
 }];
 ```
 
@@ -322,7 +322,7 @@ Example:
 
 ```objective-c
 [dwebview setJavascriptCloseWindowListener:^{
-        NSLog(@"window.close called");
+    NSLog(@"window.close called");
 }];
 ```
 
@@ -337,7 +337,7 @@ Example:
 ```objective-c
 // test if javascript method exists.
 [dwebview hasJavascriptMethod:@"addValue" methodExistCallback:^(bool exist) {
-      NSLog(@"method 'addValue' exist : %d",exist);
+    NSLog(@"method 'addValue' exist : %d",exist);
 }];
 ```
 
@@ -411,7 +411,7 @@ custom the  label text of  javascript dialog that includes alert/confirm/prompt,
    ```objective-c
    // call javascript method
    [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber * value){
-         NSLog(@"%@",value);
+        NSLog(@"%@",value);
    }];
 
    [dwebview callHandler:@"append" arguments:@[@"I",@"love",@"you"] completionHandler:^(NSString * _Nullable value) {
@@ -455,11 +455,11 @@ custom the  label text of  javascript dialog that includes alert/confirm/prompt,
 
    ```objective-c
    [dwebview callHandler:@"test.test1" completionHandler:^(NSString * _Nullable value) {
-           NSLog(@"Namespace test.test1: %@",value);
+        NSLog(@"Namespace test.test1: %@",value);
    }];
 
    [dwebview callHandler:@"test1.test1" completionHandler:^(NSString * _Nullable value) {
-           NSLog(@"Namespace test1.test1: %@",value);
+        NSLog(@"Namespace test1.test1: %@",value);
    }];
    ```
 
