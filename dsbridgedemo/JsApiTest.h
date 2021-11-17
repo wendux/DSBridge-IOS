@@ -6,8 +6,8 @@
 //  Copyright © 2016年 杜文. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "dsbridge.h"
+#import <Foundation/Foundation.h>
 
 @interface JsApiTest : NSObject
 

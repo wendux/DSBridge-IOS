@@ -11,14 +11,12 @@
 
 @implementation JsEchoApi
 
-- (id) syn:(id) arg
-{
+- (id)syn:(id)arg {
     return arg;
 }
 
-- (void) asyn: (id) arg :(JSCallback)completionHandler
-{
-    completionHandler(arg,YES);
+- (void)asyn:(id)arg callback:(JSCallback)completionHandler {
+    completionHandler(arg, YES);
 }
 
 @end

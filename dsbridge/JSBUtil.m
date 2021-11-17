@@ -5,22 +5,20 @@
 //
 
 #import "JSBUtil.h"
-#import <objc/runtime.h>
 #import "DWKWebView.h"
-
+#import <objc/runtime.h>
 
 @implementation JSBUtil
-+ (NSString *)objToJsonString:(id)dict
-{
++ (NSString *)objToJsonString:(id)dict {
     NSString *jsonString = nil;
     NSError *error;
-    
+
     if (![NSJSONSerialization isValidJSONObject:dict]) {
         return @"{}";
     }
-    
+
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    if (! jsonData) {
+    if (!jsonData) {
         return @"{}";
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -36,26 +34,25 @@
         Method *method = class_copyMethodList(class, &count);
         for (unsigned int i = 0; i < count; i++) {
             SEL name1 = method_getName(method[i]);
-            const char *selName= sel_getName(name1);
+            const char *selName = sel_getName(name1);
             NSString *strName = [NSString stringWithCString:selName encoding:NSUTF8StringEncoding];
             [methods addObject:strName];
         }
         free(method);
-        
+
         Class cls = class_getSuperclass(class);
         class = [NSStringFromClass(cls) isEqualToString:NSStringFromClass([NSObject class])] ? nil : cls;
     }
-    
+
     return [NSArray arrayWithArray:methods];
 }
 
 //return method name for xxx: or xxx:handle:
-+(NSString *)methodByNameArg:(NSInteger)argNum selName:(NSString *)selName class:(Class)class
-{
++ (NSString *)methodByNameArg:(NSInteger)argNum selName:(NSString *)selName class:(Class)class {
     NSString *result = nil;
-    if(class){
+    if (class) {
         NSArray *arr = [JSBUtil allMethodFromClass:class];
-        for (int i=0; i<arr.count; i++) {
+        for (int i = 0; i < arr.count; i++) {
             NSString *method = arr[i];
             NSArray *tmpArr = [method componentsSeparatedByString:@":"];
             NSRange range = [method rangeOfString:@":"];
@@ -71,32 +68,28 @@
     return result;
 }
 
-+ (NSArray *)parseNamespace: (NSString *) method{
-    NSRange range=[method rangeOfString:@"." options:NSBackwardsSearch];
-    NSString *namespace=@"";
-    if(range.location!=NSNotFound){
-        namespace=[method substringToIndex:range.location];
-        method=[method substringFromIndex:range.location+1];
++ (NSArray *)parseNamespace:(NSString *)method {
+    NSRange range = [method rangeOfString:@"." options:NSBackwardsSearch];
+    NSString *namespace = @"";
+    if (range.location != NSNotFound) {
+        namespace = [method substringToIndex:range.location];
+        method = [method substringFromIndex:range.location + 1];
     }
-    return @[namespace,method];
-    
+    return @[ namespace, method ];
 }
 
-
-+ (id )jsonStringToObject:(NSString *)jsonString
-{
++ (id)jsonStringToObject:(NSString *)jsonString {
     if (jsonString == nil) {
         return nil;
     }
-    
+
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                         options:NSJSONReadingMutableContainers
                                                           error:&err];
-    if(err)
-    {
-        NSLog(@"json解析失败：%@",err);
+    if (err) {
+        NSLog(@"json解析失败：%@", err);
         return nil;
     }
     return dic;
