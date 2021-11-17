@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DSBridge"
-  s.version      = "3.0.7"
+  s.version      = "3.0.8"
   s.summary      = "An ios bridge for calling functions synchronously and asynchronously between JavaScript and Object-C in WKWebView"
 
   # This description is used to generate tags and improve search results.
@@ -76,8 +76,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yingkong1987/DSBridge-IOS", :tag => "#{s.version}" }
-
+  s.source       = { :git => "https://github.com/yingkong1987/DSBridge-IOS.git", :tag => "#{s.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
