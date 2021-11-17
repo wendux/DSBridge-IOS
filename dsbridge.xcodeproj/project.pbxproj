@@ -56,7 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7AC026872744F1DA008A6B16 /* DSBridge.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSBridge.podspec; sourceTree = "<group>"; };
+		7AC026872744F1DA008A6B16 /* DSBridge-iOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "DSBridge-iOS.podspec"; sourceTree = "<group>"; };
 		812F1D3B216F1F9D00B5BD0C /* publish.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = publish.sh; sourceTree = "<group>"; };
 		8142EA1C214212E600BEE5C0 /* dsbridgedemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dsbridgedemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8142EA1D214212E700BEE5C0 /* JsApiTestSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsApiTestSwift.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				81CFC861202953CB00CF9D83 /* .travis.yml */,
 				81CFC85F2029456C00CF9D83 /* readme-chs.md */,
 				81EBBFFD1EF24DDE00D1E4C1 /* README.md */,
-				7AC026872744F1DA008A6B16 /* DSBridge.podspec */,
+				7AC026872744F1DA008A6B16 /* DSBridge-iOS.podspec */,
 				818F0B901E18C08100679925 /* dsbridge */,
 				818F0B9F1E18C0AA00679925 /* dsbridgedemo */,
 				818F0B8F1E18C08100679925 /* Products */,
