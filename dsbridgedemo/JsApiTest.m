@@ -7,51 +7,47 @@
 
 #import "JsApiTest.h"
 
-@interface JsApiTest(){
-  NSTimer * timer ;
-  void(^hanlder)(id value,BOOL isComplete);
-  int value;
+@interface JsApiTest() {
+    NSTimer *timer;
+    void (^hanlder)(id value, BOOL isComplete);
+    int value;
 }
+
 @end
 
 @implementation JsApiTest
 
-- (NSString *) testSyn: (NSString *) msg
-{
+- (NSString *)testSyn:(NSString *)msg {
     return [msg stringByAppendingString:@"[ syn call]"];
 }
 
-- (void) testAsyn:(NSString *) msg :(JSCallback) completionHandler
-{
-    completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
+- (void)testAsyn:(NSString *)msg callback:(JSCallback)completionHandler {
+    completionHandler([msg stringByAppendingString:@" [ asyn call]"], YES);
 }
 
-- (NSString *)testNoArgSyn:(NSDictionary *) args
-{
-    return  @"testNoArgSyn called [ syn call]";
+- (NSString *)testNoArgSyn:(NSDictionary *)args {
+    return @"testNoArgSyn called [ syn call]";
 }
 
-- ( void )testNoArgAsyn:(NSDictionary *) args :(JSCallback)completionHandler
-{
-    completionHandler(@"testNoArgAsyn called [ asyn call]",YES);
+- (void)testNoArgAsyn:(NSDictionary *)args callback:(JSCallback)completionHandler {
+    completionHandler(@"testNoArgAsyn called [ asyn call]", YES);
 }
 
-- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
-{
-    value=10;
-    hanlder=completionHandler;
-    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                              target:self
-                                            selector:@selector(onTimer:)
-                                            userInfo:nil
-                                             repeats:YES];
+- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler {
+    value = 10;
+    hanlder = completionHandler;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTimer:)
+                                           userInfo:nil
+                                            repeats:YES];
 }
 
--(void)onTimer:t{
-    if(value!=-1){
-        hanlder([NSNumber numberWithInt:value--],NO);
-    }else{
-        hanlder(0,YES);
+- (void)onTimer:t {
+    if (value != -1) {
+        hanlder([NSNumber numberWithInt:value--], NO);
+    } else {
+        hanlder(0, YES);
         [timer invalidate];
     }
 }
@@ -62,8 +58,7 @@
  * redirect requests to native, more about Fly see  https://github.com/wendux/fly
  * @param requestInfo passed by fly.js, more detail reference https://wendux.github.io/dist/#/doc/flyio-en/native
  */
--(void)onAjaxRequest:(NSDictionary *) requestInfo  :(JSCallback)completionHandler{
-   
+- (void)onAjaxRequest:(NSDictionary *)requestInfo callback:(JSCallback)completionHandler {
 }
 
 @end

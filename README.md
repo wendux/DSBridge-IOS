@@ -1,5 +1,5 @@
 English| [中文简体](https://github.com/wendux/DSBridge-IOS/blob/master/readme-chs.md)   
-# DSBridge  for  IOS
+# DSBridge  for  iOS
 
 ![dsBridge](https://github.com/wendux/DSBridge-IOS/raw/master/img/dsbridge.png)
 
@@ -70,12 +70,12 @@ To use a dsBridge in your own project:
    ...
    @implementation JsApiTest
    //for synchronous invocation  
-   - (NSString *) testSyn:(NSString *) msg
+   - (NSString *)testSyn:(NSString *)msg
    {
        return [msg stringByAppendingString:@"[ syn call]"];
    }
    //for asynchronous invocation
-   - (void) testAsyn:(NSString *) msg :(JSCallback)completionHandler
+   - (void)testAsyn:(NSString *)msg callback:(JSCallback)completionHandler
    {
        completionHandler([msg stringByAppendingString:@" [ asyn call]"],YES);
    }
@@ -85,7 +85,7 @@ To use a dsBridge in your own project:
 2. add API object to DWKWebView 
 
    ```objective-c
-   DWKWebView * dwebview=[[DWKWebView alloc] initWithFrame:bounds];
+   DWKWebView *dwebview = [[DWKWebView alloc] initWithFrame:bounds];
    // register api object without namespace
    [dwebview addJavascriptObject:[[JsApiTest alloc] init] namespace:nil];
    ```
@@ -197,21 +197,21 @@ Normally, when a API is called to end, it returns a result, which corresponds on
 In Object-c 
 
 ```objective-c
-- ( void )callProgress:(NSDictionary *) args :(JSCallback)completionHandler
-{
-    value=10;
-    hanlder=completionHandler;
-    timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                              target:self
-                                            selector:@selector(onTimer:)
-                                            userInfo:nil
-                                             repeats:YES];
+- (void)callProgress:(NSDictionary *)args callback:(JSCallback)completionHandler {
+    value = 10;
+    hanlder = completionHandler;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTimer:)
+                                           userInfo:nil
+                                            repeats:YES];
 }
--(void)onTimer:t{
-    if(value!=-1){
-        hanlder([NSNumber numberWithInt:value--],NO);
-    }else{
-        hanlder(@"",YES);
+
+- (void)onTimer:t {
+    if (value != -1) {
+        hanlder([NSNumber numberWithInt:value--], NO);
+    } else {
+        hanlder(@"", YES);
         [timer invalidate];
     }
 }
@@ -261,14 +261,14 @@ Example:
 
 ```objective-c
 @implementation JsEchoApi
-- (id) syn:(id) arg
-{
+- (id)syn:(id)arg {
     return arg;
 }
-- (void) asyn: (id) arg :(JSCallback)completionHandler
-{
-    completionHandler(arg,YES);
+
+- (void)asyn:(id)arg callback:(JSCallback)completionHandler {
+    completionHandler(arg, YES);
 }
+
 @end
 // register api object with namespace "echo"
 [dwebview addJavascriptObject:[[JsEchoApi alloc] init] namespace:@"echo"];
@@ -282,7 +282,7 @@ var ret=dsBridge.call("echo.syn",{msg:" I am echoSyn call", tag:1})
 alert(JSON.stringify(ret))  
 // call echo.asyn
 dsBridge.call("echo.asyn",{msg:" I am echoAsyn call",tag:2},function (ret) {
-      alert(JSON.stringify(ret));
+    alert(JSON.stringify(ret));
 })
 ```
 
@@ -294,11 +294,11 @@ Remove the  Object-c API object with supplied namespace.
 
 
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args`
 
-##### `callHandler:(NSString *) methodName  completionHandler:(void (^)(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  completionHandler:(void (^)(id value))completionHandler`
 
-##### `callHandler:(NSString *) methodName  arguments:(NSArray *) args completionHandler:(void (^ )(id value))completionHandler`
+##### `callHandler:(NSString *)methodName  arguments:(NSArray *)args completionHandler:(void (^ )(id value))completionHandler`
 
 Call the javascript API. If a `completionHandler` is given, the javascript handler can respond. the `methodName` can contain the namespace.  **The completionHandler will be called in main thread**.
 
@@ -307,11 +307,11 @@ Example:
 ```objective-c
 [dwebview callHandler:@"append" arguments:@[@"I",@"love",@"you"]
   completionHandler:^(NSString * _Nullable value) {
-       NSLog(@"call succeed, append string is: %@",value);
+    NSLog(@"call succeed, append string is: %@",value);
 }];
 // call with namespace 'syn', More details to see the Demo project                    
 [dwebview callHandler:@"syn.getInfo" completionHandler:^(NSDictionary * _Nullable value) {
-        NSLog(@"Namespace syn.getInfo: %@",value);
+    NSLog(@"Namespace syn.getInfo: %@",value);
 }];
 ```
 
@@ -324,7 +324,7 @@ BE CAREFUL to use. if you call any of the javascript popup box functions (`alert
 Example:
 
 ```objective-c
-[dwebview disableJavascriptDialogBlock: true]
+[dwebview disableJavascriptDialogBlock:true]
 ```
 
 if you want to  enable the block,  just calling this method with the argument value `false` .
@@ -339,7 +339,7 @@ Example:
 
 ```objective-c
 [dwebview setJavascriptCloseWindowListener:^{
-        NSLog(@"window.close called");
+    NSLog(@"window.close called");
 }];
 ```
 
@@ -354,7 +354,7 @@ Example:
 ```objective-c
 // test if javascript method exists.
 [dwebview hasJavascriptMethod:@"addValue" methodExistCallback:^(bool exist) {
-      NSLog(@"method 'addValue' exist : %d",exist);
+    NSLog(@"method 'addValue' exist : %d",exist);
 }];
 ```
 
@@ -430,7 +430,7 @@ Register javascript synchronous and asynchronous  API for Native invocation. The
    ```objective-c
    // call javascript method
    [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber * value){
-         NSLog(@"%@",value);
+        NSLog(@"%@",value);
    }];
 
    [dwebview callHandler:@"append" arguments:@[@"I",@"love",@"you"] completionHandler:^(NSString * _Nullable value) {

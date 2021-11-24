@@ -6,13 +6,12 @@
 //  Copyright © 2017年 杜文. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "dsbridge.h"
 #import "JsApiTest.h"
+#import "dsbridge.h"
+#import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <WKNavigationDelegate>
-{
+@interface ViewController : UIViewController <WKNavigationDelegate> {
     JsApiTest *jsApi;
 }
-@end
 
+@end
